@@ -3,10 +3,14 @@ part of 'trending_bloc.dart';
 @immutable
 abstract class TrendingEvent {}
 
-class GetTrending extends TrendingEvent {}
+class GetTrending extends TrendingEvent {
+  int page = 1;
+
+  GetTrending(this.page);
+}
 
 class GetNextPage extends TrendingEvent {
-  final int page;
+  int page = 1;
 
   GetNextPage(this.page);
 }

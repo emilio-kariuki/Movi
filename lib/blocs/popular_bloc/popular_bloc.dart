@@ -12,8 +12,8 @@ class PopularBloc extends Bloc<PopularEvent, PopularState> {
       if (event is GetPopular) {
         emit(PopularLoading());
         try {
-          final popular = await Repository.getPopularMovies();
-          debugPrint("the page is ${event.page}");
+          final popular = await Repository.getPopularMovies(page: event.page);
+          
           emit(PopularLoaded(popular));
         } catch (e) {
           emit(PopularError(e.toString()));

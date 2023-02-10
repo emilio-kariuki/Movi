@@ -10,26 +10,22 @@ String topRatedToJson(TopRated data) => json.encode(data.toJson());
 
 class TopRated {
     TopRated({
-        required this.page,
         required this.results,
         required this.totalPages,
         required this.totalResults,
     });
 
-    int page;
     List<Result> results;
     int totalPages;
     int totalResults;
 
     factory TopRated.fromJson(Map<String, dynamic> json) => TopRated(
-        page: json["page"],
         results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
     );
 
     Map<String, dynamic> toJson() => {
-        "page": page,
         "results": List<dynamic>.from(results.map((x) => x.toJson())),
         "total_pages": totalPages,
         "total_results": totalResults,
@@ -74,7 +70,7 @@ class Result {
         backdropPath: json["backdrop_path"],
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],
-        originalLanguage: json["original_language"],
+        originalLanguage: json["original_language"] ?? "en",
         originalTitle: json["original_title"],
         overview: json["overview"],
         popularity: json["popularity"]?.toDouble(),

@@ -11,7 +11,7 @@ class TitleMovie extends StatelessWidget {
       children:  [
         Text(title,
             style: const TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.bold)),
        const Padding(

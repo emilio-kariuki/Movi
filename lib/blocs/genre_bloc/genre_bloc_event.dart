@@ -4,8 +4,8 @@ part of 'genre_bloc_bloc.dart';
 abstract class GenreBlocEvent {}
 
 class GetGenre extends GenreBlocEvent {
-  int genreId = 9648;
-  GetGenre(this.genreId);
+  int page = 1;
+  GetGenre(this.page);
   
   
 }

@@ -6,15 +6,10 @@ part of 'popular_bloc.dart';
 abstract class PopularEvent {}
 
 class GetPopular extends PopularEvent {
-  int page = PopularLoading().page + 1 ;
-
-
-  GetPopular();
+  int page = 1;
+  GetPopular(this.page);
 }
 
 class GetNextPage extends PopularEvent {
-  int page = PopularLoading().page + 2;
-
   GetNextPage();
 }
-

@@ -5,12 +5,7 @@ abstract class TopRatedEvent {}
 
 class GetTopRated extends TopRatedEvent {
   int page = 1;
-
-  GetTopRated();
+  GetTopRated(this.page);
 }
 
-class GetNextPage extends TopRatedEvent {
-  int page = 2;
 
-  GetNextPage();
-}

@@ -1,15 +1,15 @@
 // To parse this JSON data, do
 //
-//     final popular = popularFromJson(jsonString);
+//     final similar = similarFromJson(jsonString);
 
 import 'dart:convert';
 
-Popular popularFromJson(String str) => Popular.fromJson(json.decode(str));
+Similar similarFromJson(String str) => Similar.fromJson(json.decode(str));
 
-String popularToJson(Popular data) => json.encode(data.toJson());
+String similarToJson(Similar data) => json.encode(data.toJson());
 
-class Popular {
-    Popular({
+class Similar {
+    Similar({
         required this.page,
         required this.results,
         required this.totalPages,
@@ -21,7 +21,7 @@ class Popular {
     int totalPages;
     int totalResults;
 
-    factory Popular.fromJson(Map<String, dynamic> json) => Popular(
+    factory Similar.fromJson(Map<String, dynamic> json) => Similar(
         page: json["page"],
         results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
         totalPages: json["total_pages"],
@@ -39,14 +39,14 @@ class Popular {
 class Result {
     Result({
         required this.adult,
-        required this.backdropPath,
+        this.backdropPath,
         required this.genreIds,
         required this.id,
         required this.originalLanguage,
         required this.originalTitle,
         required this.overview,
         required this.popularity,
-        required this.posterPath,
+        this.posterPath,
         required this.releaseDate,
         required this.title,
         required this.video,
@@ -55,14 +55,14 @@ class Result {
     });
 
     bool adult;
-    String ?backdropPath;
+    String? backdropPath;
     List<int> genreIds;
     int id;
     OriginalLanguage originalLanguage;
     String originalTitle;
     String overview;
     double popularity;
-    String posterPath;
+    String? posterPath;
     DateTime releaseDate;
     String title;
     bool video;
@@ -71,7 +71,7 @@ class Result {
 
     factory Result.fromJson(Map<String, dynamic> json) => Result(
         adult: json["adult"],
-        backdropPath: json["backdrop_path"] ?? "",
+        backdropPath: json["backdrop_path"],
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],
         originalLanguage: originalLanguageValues.map[json["original_language"]] ?? OriginalLanguage.EN,
@@ -104,13 +104,12 @@ class Result {
     };
 }
 
-enum OriginalLanguage { EN, KO, ES, JA }
+enum OriginalLanguage { EN, DE, SV }
 
 final originalLanguageValues = EnumValues({
+    "de": OriginalLanguage.DE,
     "en": OriginalLanguage.EN,
-    "es": OriginalLanguage.ES,
-    "ja": OriginalLanguage.JA,
-    "ko": OriginalLanguage.KO
+    "sv": OriginalLanguage.SV
 });
 
 class EnumValues<T> {

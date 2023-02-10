@@ -12,7 +12,7 @@ class GenreBlocBloc extends Bloc<GenreBlocEvent, GenreBlocState> {
      if(event is GetGenre){
        emit(GenreLoading());
        try{
-         final genre = await Repository.getGenreMovies(genre: event.genreId, page: 1);
+         final genre = await Repository.getGenreMovies(page:event.page);
          emit(GenreLoaded(genre));
        }catch(e){
          emit(GenreError(e.toString()));

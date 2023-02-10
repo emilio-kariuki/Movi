@@ -3,12 +3,12 @@ part of 'trending_bloc.dart';
 @immutable
 abstract class TrendingState {}
 
-class TrendingInitial extends TrendingState {
-  TrendingInitial();
-  
-}
+class TrendingInitial extends TrendingState {}
 
-class TrendingLoading extends TrendingState {}
+class TrendingLoading extends TrendingState {
+  TrendingLoading();
+
+}
 
 class TrendingLoaded extends TrendingState {
   final Trending trending;

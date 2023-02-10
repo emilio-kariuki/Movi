@@ -60,20 +60,20 @@ class Result {
     });
 
     bool adult;
-    String backdropPath;
+    String ?backdropPath;
     int id;
     String? title;
-    OriginalLanguage originalLanguage;
+    String originalLanguage;
     String? originalTitle;
-    String overview;
-    String posterPath;
-    MediaType mediaType;
-    List<int> genreIds;
-    double popularity;
+    String ?overview;
+    String ?posterPath;
+    MediaType ? mediaType;
+    List<int> ?genreIds;
+    double ?popularity;
     DateTime? releaseDate;
     bool? video;
-    double voteAverage;
-    int voteCount;
+    double? voteAverage;
+    int ?voteCount;
     String? name;
     String? originalName;
     DateTime? firstAirDate;
@@ -81,20 +81,20 @@ class Result {
 
     factory Result.fromJson(Map<String, dynamic> json) => Result(
         adult: json["adult"],
-        backdropPath: json["backdrop_path"],
+        backdropPath: json["backdrop_path"] ?? "",
         id: json["id"],
         title: json["title"],
-        originalLanguage: originalLanguageValues.map[json["original_language"]]!,
+        originalLanguage: json["original_language"] ?? "en",
         originalTitle: json["original_title"],
-        overview: json["overview"],
-        posterPath: json["poster_path"],
-        mediaType: mediaTypeValues.map[json["media_type"]]!,
-        genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
-        popularity: json["popularity"]?.toDouble(),
-        releaseDate: json["release_date"] == null ? null : DateTime.parse(json["release_date"]),
+        overview: json["overview"] ?? "",
+        posterPath: json["poster_path"] ?? "",
+        mediaType: mediaTypeValues.map[json["media_type"]] ?? MediaType.MOVIE,
+        genreIds: json["genre_ids"] == null ? [] : List<int>.from(json["genre_ids"]!.map((x) => x)),
+        popularity: json["popularity"]?? 0.0,
+        releaseDate: json["release_date"] == null ? DateTime.now() : DateTime.parse(json["release_date"]),
         video: json["video"],
-        voteAverage: json["vote_average"]?.toDouble(),
-        voteCount: json["vote_count"],
+        voteAverage: json["vote_average"] ?? 0.0,
+        voteCount: json["vote_count"] ?? 0,
         name: json["name"],
         originalName: json["original_name"],
         firstAirDate: json["first_air_date"] == null ? null : DateTime.parse(json["first_air_date"]),
@@ -106,12 +106,12 @@ class Result {
         "backdrop_path": backdropPath,
         "id": id,
         "title": title,
-        "original_language": originalLanguageValues.reverse[originalLanguage],
+        "original_language": originalLanguage,
         "original_title": originalTitle,
         "overview": overview,
         "poster_path": posterPath,
         "media_type": mediaTypeValues.reverse[mediaType],
-        "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
+        "genre_ids": List<dynamic>.from(genreIds!.map((x) => x)),
         "popularity": popularity,
         "release_date": "${releaseDate!.year.toString().padLeft(4, '0')}-${releaseDate!.month.toString().padLeft(2, '0')}-${releaseDate!.day.toString().padLeft(2, '0')}",
         "video": video,
@@ -129,14 +129,6 @@ enum MediaType { MOVIE, TV }
 final mediaTypeValues = EnumValues({
     "movie": MediaType.MOVIE,
     "tv": MediaType.TV
-});
-
-enum OriginalLanguage { EN, ZH, NO }
-
-final originalLanguageValues = EnumValues({
-    "en": OriginalLanguage.EN,
-    "no": OriginalLanguage.NO,
-    "zh": OriginalLanguage.ZH
 });
 
 class EnumValues<T> {

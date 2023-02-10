@@ -22,6 +22,8 @@ class PopularMovies extends StatelessWidget {
                       itemCount: state.popular.results.length,
                       itemBuilder: (context, index) {
                         return MoviesWidget(
+                                                    id: state.popular.results[index].id,
+
                           title: state.popular.results[index].title,
                           posterPath:
                               "https://image.tmdb.org/t/p/original/${state.popular.results[index].posterPath}",

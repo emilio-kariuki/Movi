@@ -5,12 +5,11 @@ abstract class PopularState {}
 
 class PopularInitial extends PopularState {
   PopularInitial();
-  int page = 0;
 }
 
 class PopularLoading extends PopularState {
   PopularLoading();
-  int page = 0;
+
 }
 
 class PopularLoaded extends PopularState {

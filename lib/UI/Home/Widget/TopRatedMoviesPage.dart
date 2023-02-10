@@ -23,6 +23,7 @@ class TopRatedMovies extends StatelessWidget {
                       itemCount: state.topRated.results.length,
                       itemBuilder: (context, index) {
                         return MoviesWidget(
+                          id: state.topRated.results[index].id,
                           title:
                               state.topRated.results[index].title,
                           posterPath:
