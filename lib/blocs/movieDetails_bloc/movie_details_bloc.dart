@@ -12,13 +12,13 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
     on<MovieDetailsEvent>((event, emit) async {
       if (event is GetMovieDetails) {
         emit(MovieDetailsLoading());
-        // try {
+        try {
           final movieDetails =
               await Repository.getMovieDetails(id: event.movieId);
           emit(MovieDetailsLoaded(movieDetails));
-        // } catch (e) {
-        //   emit(MovieDetailsError(e.toString()));
-        // }
+        } catch (e) {
+          emit(MovieDetailsError(e.toString()));
+        }
       }
       
     },

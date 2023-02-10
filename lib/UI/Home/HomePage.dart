@@ -26,13 +26,13 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int page = Random().nextInt(500);
+    int page = Random().nextInt(300);
     return Scaffold(
       backgroundColor: Colors.black,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.deepOrange,
         onPressed: () {
-          int page = Random().nextInt(500);
+          int page = Random().nextInt(300);
 
           BlocProvider.of<PopularBloc>(context).add(GetPopular(page));
           BlocProvider.of<TrendingBloc>(context).add(GetTrending(page));
@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () async {
-            int page = Random().nextInt(500);
+            int page = Random().nextInt(300);
             BlocProvider.of<PopularBloc>(context).add(GetPopular(page));
             BlocProvider.of<TrendingBloc>(context).add(GetTrending(page));
             BlocProvider.of<TopRatedBloc>(context).add(GetTopRated(page));
