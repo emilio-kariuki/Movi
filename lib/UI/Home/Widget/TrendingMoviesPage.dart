@@ -1,41 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movistar/UI/Home/Widget/LoadingMovieShimmer.dart';
 import 'package:movistar/UI/Home/Widget/MovieWidget.dart';
-import 'package:movistar/blocs/trending_bloc/trending_bloc.dart';
+import 'package:movistar/models/TrendingModel.dart';
+
+import '../../../blocs/bloc/home_bloc.dart';
 
 class TrendingMovies extends StatelessWidget {
-  const TrendingMovies({super.key});
+  final Trending state;
+  const TrendingMovies({super.key, required this.state});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TrendingBloc, TrendingState>(
-      builder: (context, state) {
-        if (state is TrendingInitial) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is TrendingLoading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is TrendingLoaded) {
-          return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.26,
+    return  SizedBox(
+            height: MediaQuery.of(context).size.width > 900
+                ? MediaQuery.of(context).size.height * 0.4
+                : MediaQuery.of(context).size.height * 0.27,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: state.trending.results.length,
+              itemCount: state.results.length,
               itemBuilder: (context, index) {
                 return MoviesWidget(
-                  id: state.trending.results[index].id,
-                  title: state.trending.results[index].title ?? "unknown",
+                  id: state.results[index].id,
+                  title: state.results[index].title ?? "unknown",
                   posterPath:
-                      "https://image.tmdb.org/t/p/original/${state.trending.results[index].posterPath}",
+                      "https://image.tmdb.org/t/p/original/${state.results[index].posterPath}",
                 );
               },
             ),
           );
-        } else if (state is TrendingError) {
-          return Center(child: Text(state.message));
-        } else {
-          return const Center(child: Text("Error"));
-        }
-      },
-    );
   }
 }

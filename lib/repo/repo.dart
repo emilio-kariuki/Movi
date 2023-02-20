@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:movistar/UI/Home/Widget/TrendingMoviesPage.dart';
 import 'package:movistar/models/GenreMovieModel.dart';
 import 'package:movistar/models/MovieCastsModel.dart';
 import 'package:movistar/models/MovieDetailsModel.dart';
 import 'package:movistar/models/MovieGenreModel.dart';
-import 'package:movistar/models/PopularModel.dart';
+import 'package:movistar/models/MovieModel.dart';
 import 'package:http/http.dart' as http;
-import 'package:movistar/models/SimilarMovieModel.dart';
-import 'package:movistar/models/TopRatedModel.dart';
+import 'package:movistar/models/SearchMovieModel.dart';
 import 'package:movistar/models/TrendingModel.dart';
 import 'package:movistar/models/UserFilmsModel.dart';
 import 'package:movistar/models/userModel.dart';
@@ -28,13 +28,13 @@ class Repository {
     }
   }
 
-  static Future<Popular> getPopularMovies({int page = 1}) async {
+  static Future<MovieModel> getPopularMovies({int page = 1}) async {
     String response = await getResponse(
       url:
           "https://api.themoviedb.org/3/movie/popular?api_key=502e894cf5940df8a65af3537e812b5c&page=$page&language=en-US",
     );
     debugPrint(response);
-    return popularFromJson(response);
+    return movieModelFromJson(response);
   }
 
   static Future<Trending> getTrendingMovies({int page = 1}) async {
@@ -42,16 +42,16 @@ class Repository {
       url:
           "https://api.themoviedb.org/3/trending/all/day?api_key=502e894cf5940df8a65af3537e812b5c&page=${page}&language=en-US",
     );
-    
+
     return trendingFromJson(response);
   }
 
-  static Future<TopRated> getTopRatedMovies({int page = 1}) async {
+  static Future<MovieModel> getTopRatedMovies({int page = 1}) async {
     String response = await getResponse(
       url:
           "https://api.themoviedb.org/3/movie/top_rated?api_key=502e894cf5940df8a65af3537e812b5c&page=${page}l&language=en-US",
     );
-    return topRatedFromJson(response);
+    return movieModelFromJson(response);
   }
 
   static Future<GenreMovie> getGenreMovies(
@@ -79,15 +79,15 @@ class Repository {
     return castFromJson(response);
   }
 
-  static Future<Similar> getMovieSimilar({required int id} ) async {
+  static Future<MovieModel> getMovieSimilar({required int id}) async {
     String response = await getResponse(
         url:
             "https://api.themoviedb.org/3/movie/$id/similar?api_key=502e894cf5940df8a65af3537e812b5c&language=en-US");
 
-    return similarFromJson(response);
+    return movieModelFromJson(response);
   }
 
-  static Future<User> getUser({required int id} ) async {
+  static Future<User> getUser({required int id}) async {
     String response = await getResponse(
         url:
             "https://api.themoviedb.org/3/person/$id?api_key=502e894cf5940df8a65af3537e812b5c&language=en-US&page=1");
@@ -95,7 +95,7 @@ class Repository {
     return userFromJson(response);
   }
 
-  static Future<UserFilms> getUserFilms({required int id} ) async {
+  static Future<UserFilms> getUserFilms({required int id}) async {
     String response = await getResponse(
         url:
             "https://api.themoviedb.org/3/person/$id/movie_credits?api_key=502e894cf5940df8a65af3537e812b5c&language=en-US&page=1");
@@ -111,5 +111,12 @@ class Repository {
     return movieGenreFromJson(response);
   }
 
+  static Future<SearchModel> getSearchMovie({required String title}) async {
+    String response = await getResponse(
+        url:
+            "https://api.themoviedb.org/3/search/movie?api_key=502e894cf5940df8a65af3537e812b5c&language=en-US&page=1&query=$title");
 
+    return searchModelFromJson(response);
+  }
 }
+  

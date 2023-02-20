@@ -19,10 +19,12 @@ class CastsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 10, top: 5, bottom: 5),
+      padding: const EdgeInsets.only(right: 10, ),
       child: SizedBox(
         // height: MediaQuery.of(context).size.height * 0.2,
-        width: MediaQuery.of(context).size.width * 0.3,
+        width: MediaQuery.of(context).size.width > 900
+            ? MediaQuery.of(context).size.width * 0.1
+            : MediaQuery.of(context).size.width * 0.27 ,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,9 +38,9 @@ class CastsWidget extends StatelessWidget {
                 
               },
               child: CachedNetworkImage(
-                // height: MediaQuery.of(context).size.height * 0.2,
-                // width: MediaQuery.of(context).size.width * 0.2,
-                height: 100,
+                height: MediaQuery.of(context).size.height > 400
+                    ? MediaQuery.of(context).size.height * 0.2
+                    : MediaQuery.of(context).size.height * 0.2,
                 imageUrl: "https://image.tmdb.org/t/p/w500$posterPath",
                 fit: BoxFit.cover,
                 imageBuilder: (context, imageProvider) {
@@ -64,9 +66,9 @@ class CastsWidget extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
+            MediaQuery.of(context).size.width> 900 ? const SizedBox(
               height: 10,
-            ),
+            ) : Container(),
             Text(
               name,
               // overflow: TextOverflow.ellipsis,

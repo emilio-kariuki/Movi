@@ -8,7 +8,7 @@ class SimilarInitial extends SimilarState {}
 class SimilarLoading extends SimilarState {}
 
 class SimilarLoaded extends SimilarState {
-  final Similar similar;
+  final MovieModel similar;
   SimilarLoaded(this.similar);
 }
 

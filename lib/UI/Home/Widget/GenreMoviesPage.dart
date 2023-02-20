@@ -1,44 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movistar/UI/Home/Widget/MovieWidget.dart';
-import 'package:movistar/blocs/genre_bloc/genre_bloc_bloc.dart';
-import 'package:movistar/blocs/trending_bloc/trending_bloc.dart';
+import '../../../models/GenreMovieModel.dart';
 
-class GenreMovie extends StatelessWidget {
-  const GenreMovie({
-    super.key,
+
+
+class GenreMovies extends StatelessWidget {
+  final GenreMovie state;
+  const GenreMovies({
+    super.key, required this.state,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GenreBlocBloc, GenreBlocState>(
-      builder: (context, state) {
-        if (state is GenreBlocInitial) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is GenreLoading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is GenreLoaded) {
-          return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.26,
+    return SizedBox(
+            height: MediaQuery.of(context).size.width > 900
+                ? MediaQuery.of(context).size.height * 0.4
+                : MediaQuery.of(context).size.height * 0.27,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: state.genreList.items.length,
+              itemCount: state.items.length,
               itemBuilder: (context, index) {
                 return MoviesWidget(
-                  id: state.genreList.items[index].id,
-                  title: state.genreList.items[index].title,
+                  id: state.items[index].id,
+                  title: state.items[index].title,
                   posterPath:
-                      "https://image.tmdb.org/t/p/original/${state.genreList.items[index].posterPath}",
+                      "https://image.tmdb.org/t/p/original/${state.items[index].posterPath}",
                 );
               },
             ),
           );
-        } else if (state is GenreError) {
-          return Center(child: Text(state.message));
-        } else {
-          return const Center(child: Text("Error"));
-        }
-      },
-    );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:movistar/models/SimilarMovieModel.dart';
+import 'package:movistar/models/MovieModel.dart';
 import 'package:movistar/repo/repo.dart';
 
 part 'similar_event.dart';
