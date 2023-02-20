@@ -729,13 +729,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                                 }
                               },
                             )),
-                        const TitleMovie(title: "Popular"),
-                        MediaQuery.of(context).size.width > 900
-                            ? const SizedBox(
-                                height: 10,
-                              )
-                            : const SizedBox(),
-                        // const PopularMovies(state: state),
+                        
                       ],
                     ),
                   ),

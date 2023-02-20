@@ -77,11 +77,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           child: Scaffold(
               key: _sKey,
               backgroundColor: Colors.black,
-              floatingActionButton: FloatingActionButton(
-                backgroundColor: Colors.deepOrange,
-                onPressed: () {},
-                child: const Icon(Icons.refresh),
-              ),
               body: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: SingleChildScrollView(
@@ -100,8 +95,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           return SafeArea(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 //search bar
 
@@ -112,22 +106,20 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                           Responsive.isTablet(context)
                                       ? Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment
-                                                  .spaceBetween,
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text("Movistar",
                                                 style: TextStyle(
                                                     color: Colors.white,
-                                                    fontSize: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .width >
-                                                            600
-                                                        ? 30
-                                                        : 20)),
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                    .size
+                                                                    .width >
+                                                                600
+                                                            ? 30
+                                                            : 20)),
                                             SizedBox(
-                                              width: MediaQuery.of(
-                                                              context)
+                                              width: MediaQuery.of(context)
                                                           .size
                                                           .width >
                                                       900
@@ -140,71 +132,64 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                           .width *
                                                       0.5,
                                               child: TextFormField(
-                                                style:
-                                                    GoogleFonts.poppins(
-                                                        color:
-                                                            Colors.white),
-                                                controller:
-                                                    movieController,
-                                                decoration:
-                                                    InputDecoration(
-                                                        filled: true,
-                                                        fillColor: Colors
-                                                            .grey[800],
-                                                        prefixIcon:
-                                                            const Padding(
-                                                          padding: EdgeInsets
-                                                              .only(
-                                                                  left:
-                                                                      10),
-                                                          child: Icon(
-                                                            Icons.search,
+                                                
+                                                onTap: () {
+                                                  context.pushNamed(
+                                                      "search",
+                                                      );
+                                                },
+                                                style: GoogleFonts.poppins(
+                                                    color: Colors.white),
+                                                controller: movieController,
+                                                decoration: InputDecoration(
+                                                    filled: true,
+                                                    fillColor: Colors.grey[800],
+                                                    prefixIcon: const Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 10),
+                                                      child: Icon(
+                                                        Icons.search,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    hintStyle:
+                                                        GoogleFonts.poppins(
                                                             color: Colors
-                                                                .white,
-                                                          ),
-                                                        ),
-                                                        hintStyle: GoogleFonts
-                                                            .poppins(
-                                                                color: Colors
-                                                                    .white),
-                                                        hintText:
-                                                            "Search Movie",
-                                                        contentPadding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal:
-                                                                    10),
-                                                        border:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      25),
-                                                          borderSide: const BorderSide(
+                                                                .white),
+                                                    hintText: "Search Movie",
+                                                    contentPadding:
+                                                        const EdgeInsets
+                                                                .symmetric(
+                                                            horizontal: 10),
+                                                    border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              25),
+                                                      borderSide:
+                                                          const BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 1),
-                                                        ),
-                                                        enabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      25),
-                                                          borderSide: const BorderSide(
+                                                    ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              25),
+                                                      borderSide:
+                                                          const BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 1),
-                                                        )),
+                                                    )),
                                               ),
                                             ),
                                           ],
                                         )
                                       : Padding(
-                                          padding:
-                                              const EdgeInsets.symmetric(
-                                                  // horizontal: 15,
-                                                  vertical: 10),
+                                          padding: const EdgeInsets.symmetric(
+                                              // horizontal: 15,
+                                              vertical: 10),
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
@@ -213,57 +198,56 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                             children: [
                                               SizedBox(
                                                 child: TextFormField(
-                                                  style:
-                                                      GoogleFonts.poppins(
-                                                          color: Colors
-                                                              .white),
-                                                  controller:
-                                                      movieController,
-                                                  decoration:
-                                                      InputDecoration(
-                                                          filled: true,
-                                                          fillColor:
-                                                              Colors.grey[
-                                                                  800],
-                                                          prefixIcon:
-                                                              const Icon(
-                                                            Icons.search,
-                                                            color: Colors
-                                                                .white,
-                                                          ),
-                                                          hintStyle: GoogleFonts
-                                                              .poppins(
-                                                                  color: Colors
-                                                                      .white),
-                                                          hintText:
-                                                              "Search Movie",
-                                                          contentPadding:
-                                                              const EdgeInsets
-                                                                      .symmetric(
-                                                                  horizontal:
-                                                                      5),
-                                                          border:
-                                                              OutlineInputBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        25),
-                                                            borderSide: const BorderSide(
+                                                  keyboardType: TextInputType.none,
+                                                readOnly: true,
+                                                showCursor: true,
+                                                  onTap: () {
+                                                    context.pushNamed(
+                                                        "search",
+                                                        );
+                                                  },
+                                                  style: GoogleFonts.poppins(
+                                                      color: Colors.white),
+                                                  controller: movieController,
+                                                  decoration: InputDecoration(
+                                                      filled: true,
+                                                      fillColor:
+                                                          Colors.grey[800],
+                                                      prefixIcon: const Icon(
+                                                        Icons.search,
+                                                        color: Colors.white,
+                                                      ),
+                                                      hintStyle:
+                                                          GoogleFonts.poppins(
+                                                              color:
+                                                                  Colors.white),
+                                                      hintText: "Search Movie",
+                                                      contentPadding:
+                                                          const EdgeInsets
+                                                                  .symmetric(
+                                                              horizontal: 5),
+                                                      border:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(25),
+                                                        borderSide:
+                                                            const BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 1),
-                                                          ),
-                                                          enabledBorder:
-                                                              OutlineInputBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        25),
-                                                            borderSide: const BorderSide(
+                                                      ),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(25),
+                                                        borderSide:
+                                                            const BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 1),
-                                                          )),
+                                                      )),
                                                 ),
                                               ),
                                               const SizedBox(
@@ -271,14 +255,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                               ),
                                               Row(
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment
-                                                        .center,
+                                                    CrossAxisAlignment.center,
                                                 children: const [
                                                   Text(
                                                     "Movistar",
                                                     style: TextStyle(
-                                                        color:
-                                                            Colors.white,
+                                                        color: Colors.white,
                                                         fontSize: 25),
                                                   ),
                                                   SizedBox(
@@ -287,11 +269,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                   Text(
                                                     "On Demand",
                                                     style: TextStyle(
-                                                        color:
-                                                            Colors.grey,
+                                                        color: Colors.grey,
                                                         fontWeight:
-                                                            FontWeight
-                                                                .w400,
+                                                            FontWeight.w400,
                                                         fontSize: 18),
                                                   ),
                                                 ],
@@ -306,11 +286,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                 //carousel slider
 
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 5),
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 5),
                                   child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -318,8 +297,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
                                       // Popular Movies
 
-                                      const TitleMovie(
-                                          title: "Popular Movies"),
+                                      const TitleMovie(title: "Popular Movies"),
                                       PopularMovies(state: state.popular),
                                       //top rated
 
@@ -337,8 +315,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                         state: state.trending,
                                       ),
 
-                                      const TitleMovie(
-                                          title: "All Genres"),
+                                      const TitleMovie(title: "All Genres"),
                                       GenreMovies(
                                         state: state.genreList,
                                       ),

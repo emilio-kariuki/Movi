@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-       
         BlocProvider<MovieDetailsBloc>(
           create: (context) =>
               MovieDetailsBloc()..add(GetMovieDetails(movieId: 24)),
@@ -37,20 +36,21 @@ class MyApp extends StatelessWidget {
         BlocProvider<SimilarBloc>(
           create: (context) => SimilarBloc()..add(GetSimilar(movieId: 24)),
         ),
-         BlocProvider<MovieGenreBloc>(
+        BlocProvider<MovieGenreBloc>(
           create: (context) => MovieGenreBloc()..add(GetMovieGenre()),
         ),
         BlocProvider<SearchMovieBloc>(
-          create: (context) => SearchMovieBloc()..add(const SearchInitiated(title: "Kenya"))
-          
-        ),
+            create: (context) =>
+                SearchMovieBloc()..add( GetMovie(title: "g", page: 1))),
         BlocProvider<HomeBloc>(
           create: (context) => HomeBloc()..add(GetHome(page: 1)),
         ),
-        
       ],
       child: MaterialApp.router(
-        scrollBehavior: const MaterialScrollBehavior().copyWith( dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch,}),
+        scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.touch,
+        }),
         routerDelegate: _router.routerDelegate,
         routeInformationParser: _router.routeInformationParser,
         theme: ThemeData(
@@ -87,7 +87,6 @@ final GoRouter _router = GoRouter(
       path: "/search",
       name: "search",
       builder: (context, state) => const SearchPage(),
-
     ),
   ],
 );

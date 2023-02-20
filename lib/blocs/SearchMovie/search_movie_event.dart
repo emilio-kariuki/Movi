@@ -8,11 +8,11 @@ abstract class SearchMovieEvent extends Equatable {
   List<Object> get props => [];
 }
 
-
-class SearchInitiated extends SearchMovieEvent {
+class GetMovie extends SearchMovieEvent {
   final String title;
+  int page = 1;
 
-  const SearchInitiated({required this.title});
+   GetMovie({required this.title, required this.page});
 
   @override
   List<Object> get props => [title];

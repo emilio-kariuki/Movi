@@ -304,6 +304,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
+  pagination_flutter:
+    dependency: "direct main"
+    description:
+      name: pagination_flutter
+      sha256: "98422b16402f9f407bf4e1ac04e3e933f2440d07aa73d960556118ae832ebe19"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.8"
   path:
     dependency: transitive
     description:

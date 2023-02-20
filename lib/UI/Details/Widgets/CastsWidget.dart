@@ -23,7 +23,7 @@ class CastsWidget extends StatelessWidget {
       child: SizedBox(
         // height: MediaQuery.of(context).size.height * 0.2,
         width: MediaQuery.of(context).size.width > 900
-            ? MediaQuery.of(context).size.width * 0.1
+            ? MediaQuery.of(context).size.width * 0.12
             : MediaQuery.of(context).size.width * 0.27 ,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

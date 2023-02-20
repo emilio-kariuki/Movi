@@ -111,10 +111,10 @@ class Repository {
     return movieGenreFromJson(response);
   }
 
-  static Future<SearchModel> getSearchMovie({required String title}) async {
+  static Future<SearchModel> getSearchMovie({required String title, required int page}) async {
     String response = await getResponse(
         url:
-            "https://api.themoviedb.org/3/search/movie?api_key=502e894cf5940df8a65af3537e812b5c&language=en-US&page=1&query=$title");
+            "https://api.themoviedb.org/3/search/movie?api_key=502e894cf5940df8a65af3537e812b5c&language=en-US&page=$page&query=$title");
 
     return searchModelFromJson(response);
   }

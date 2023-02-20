@@ -11,7 +11,6 @@ abstract class SearchMovieState extends Equatable {
 class SearchMovieInitial extends SearchMovieState {}
 
 
-
 class Searching extends SearchMovieState {}
 
 class SearchMovieSuccess extends SearchMovieState {

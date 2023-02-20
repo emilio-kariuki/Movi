@@ -79,7 +79,7 @@ class Result {
         overview: json["overview"],
         popularity: json["popularity"].toDouble(),
         posterPath: json["poster_path"],
-        releaseDate: DateTime.parse(json["release_date"]),
+        releaseDate: DateTime.parse(json["release_date"]) ?? DateTime.now(), 
         title: json["title"],
         video: json["video"],
         voteAverage: json["vote_average"].toDouble(),

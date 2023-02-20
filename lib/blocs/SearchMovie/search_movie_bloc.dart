@@ -11,12 +11,12 @@ part 'search_movie_state.dart';
 
 class SearchMovieBloc extends Bloc<SearchMovieEvent, SearchMovieState> {
   SearchMovieBloc() : super(SearchMovieInitial()) {
-    on<SearchInitiated>((event, emit) async {
-      if(event is SearchInitiated){
+    on<GetMovie>((event, emit) async {
+      if(event is GetMovie){
         emit(Searching());
         try {
-          final search = await Repository.getSearchMovie(title: event.title);
-          print("Search is $search");
+          final search = await Repository.getSearchMovie(title: event.title,page: event.page);
+          print("SearchMovieBloc: ${search.results.length}");
           emit(SearchMovieSuccess(search: search));
         } catch (e) {
           emit(SearchMovieFail(e.toString()));
