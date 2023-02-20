@@ -723,9 +723,9 @@ class _MovieDetailsState extends State<MovieDetails> {
                                     ),
                                   );
                                 } else if (state is SimilarError) {
-                                  return Center(child: Text(state.message));
+                                  return Center(child: Text(state.message,style: TextStyle(color: Colors.white),));
                                 } else {
-                                  return const Center(child: Text("Error"));
+                                  return const Center(child: Text("Error", style: TextStyle(color: Colors.white),));
                                 }
                               },
                             )),
@@ -738,7 +738,7 @@ class _MovieDetailsState extends State<MovieDetails> {
             } else if (state is MovieDetailsError) {
               return Center(child: Text(state.message));
             } else {
-              return const Center(child: Text("Error"));
+              return const Center(child: Text("Error",style: TextStyle(color: Colors.white),));
             }
           },
         )),

@@ -37,9 +37,7 @@ class _CastDetailsState extends State<CastDetails> {
             children: [
               BlocBuilder<UserBloc, UserState>(
                 builder: (context, state) {
-                  if (state is UserInitial) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (state is UserLoading) {
+                   if (state is UserLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is UserLoaded) {
                     return Column(
