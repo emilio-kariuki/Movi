@@ -2,17 +2,18 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movistar/UI/Auth/LoginPage.dart';
+import 'package:movistar/UI/Auth/RegisterPage.dart';
 import 'package:movistar/UI/Details/Cast/CastWidgetPage.dart';
 import 'package:movistar/UI/Details/MovieDetailsPage.dart';
 import 'package:movistar/UI/Home/HomePage.dart';
 import 'package:movistar/UI/Home/SearchPage.dart';
 import 'package:movistar/blocs/Casts_bloc/casts_bloc.dart';
+import 'package:movistar/blocs/Homebloc/home_bloc.dart';
 import 'package:movistar/blocs/SearchMovie/search_movie_bloc.dart';
 import 'package:movistar/blocs/movieDetails_bloc/movie_details_bloc.dart';
 import 'package:movistar/blocs/movieGenre_bloc/movie_genre_bloc.dart';
 import 'package:movistar/blocs/similar_bloc/similar_bloc.dart';
-
-import 'blocs/bloc/home_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,12 +42,13 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<SearchMovieBloc>(
             create: (context) =>
-                SearchMovieBloc()..add( GetMovie(title: "g", page: 1))),
+                SearchMovieBloc()..add(GetMovie(title: "g", page: 1))),
         BlocProvider<HomeBloc>(
           create: (context) => HomeBloc()..add(GetHome(page: 1)),
         ),
       ],
       child: MaterialApp.router(
+        
         scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {
           PointerDeviceKind.mouse,
           PointerDeviceKind.touch,
@@ -57,6 +59,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
+        
       ),
     );
   }
@@ -66,7 +69,7 @@ final GoRouter _router = GoRouter(
   routes: [
     GoRoute(
       name: 'home',
-      path: '/',
+      path: '/home',
       builder: (BuildContext context, GoRouterState state) {
         return Home();
       },
@@ -87,6 +90,16 @@ final GoRouter _router = GoRouter(
       path: "/search",
       name: "search",
       builder: (context, state) => const SearchPage(),
+    ),
+    GoRoute(
+      path: "/",
+      name: "login",
+      builder: (context, state) => const Login(),
+    ),
+    GoRoute(
+      path: "/register",
+      name: "register",
+      builder: (context, state) => const Register(),
     ),
   ],
 );

@@ -15,9 +15,9 @@ import 'package:movistar/UI/Home/Widget/TopRatedMoviesPage.dart';
 // import 'package:movistar/UI/Home/Widget/TopRatedMoviesPage.dart';
 import 'package:movistar/UI/Home/Widget/TrendingMoviesPage.dart';
 import 'package:movistar/Util/Responsive.dart';
+import 'package:movistar/blocs/Homebloc/home_bloc.dart';
 import 'package:movistar/blocs/SearchMovie/search_movie_bloc.dart';
 
-import '../../blocs/bloc/home_bloc.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);

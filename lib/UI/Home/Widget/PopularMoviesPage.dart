@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movistar/UI/Home/Widget/LoadingMovieShimmer.dart';
 import 'package:movistar/UI/Home/Widget/MovieWidget.dart';
-import 'package:movistar/blocs/bloc/home_bloc.dart';
 import 'package:movistar/models/MovieModel.dart';
 
 class PopularMovies extends StatelessWidget {
