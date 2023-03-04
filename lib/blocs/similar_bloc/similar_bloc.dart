@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:movistar/models/MovieModel.dart';
-import 'package:movistar/repo/repo.dart';
+import 'package:movistar/Repository/repo.dart';
 
 part 'similar_event.dart';
 part 'similar_state.dart';

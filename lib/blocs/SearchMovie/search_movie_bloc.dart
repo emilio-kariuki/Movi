@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:movistar/models/SearchMovieModel.dart';
-import 'package:movistar/repo/repo.dart';
+import 'package:movistar/Repository/repo.dart';
 
 part 'search_movie_event.dart';
 part 'search_movie_state.dart';

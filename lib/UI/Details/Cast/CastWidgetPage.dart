@@ -37,8 +37,16 @@ class _CastDetailsState extends State<CastDetails> {
             children: [
               BlocBuilder<UserBloc, UserState>(
                 builder: (context, state) {
-                   if (state is UserLoading) {
-                    return const Center(child: CircularProgressIndicator());
+                  if (state is UserLoading) {
+                    return Container(
+                      margin: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.5),
+                      child: const Center(
+                        child: CircularProgressIndicator(
+                          strokeWidth: 3,
+                        ),
+                      ),
+                    );
                   } else if (state is UserLoaded) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -88,7 +96,7 @@ class _CastDetailsState extends State<CastDetails> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
-                                        mainAxisSize: MainAxisSize.min,
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
                                       CachedNetworkImage(
                                         height:
@@ -145,11 +153,11 @@ class _CastDetailsState extends State<CastDetails> {
                                         width: 10,
                                       ),
                                       Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                            mainAxisSize: MainAxisSize.min,
-                                        
+                                        mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Text(
                                             "${state.user.name} ",
@@ -252,13 +260,17 @@ class _CastDetailsState extends State<CastDetails> {
                                               children: [
                                                 GestureDetector(
                                                   onTap: () {
-                                                    context.pushNamed(
-                                                        "movieDetails",
-                                                        queryParams: {
-                                                          "id": state.userFilms
-                                                              .cast[index].id
-                                                              .toString(),
-                                                        });
+                                                    Navigator.of(context).push(
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                MovieDetails(
+                                                                  id: state
+                                                                      .userFilms
+                                                                      .cast[
+                                                                          index]
+                                                                      .id
+                                                                      .toString(),
+                                                                )));
                                                     // Navigator.pushNamed(context, "movieDetails
                                                   },
                                                   child: CachedNetworkImage(

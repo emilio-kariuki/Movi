@@ -1,31 +1,29 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movistar/UI/Details/MovieDetailsPage.dart';
 
 class CarouselImage extends StatelessWidget {
-  final double width ;
+  final double width;
   final String path;
   final int id;
-   const CarouselImage({super.key, required this.width, required this.path, required this.id});
+  const CarouselImage(
+      {super.key, required this.width, required this.path, required this.id});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
         onTap: () {
-                context.pushNamed("movieDetails", queryParams: {
-                  "id": id.toString(),
-                });
-                
-              },
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => MovieDetails(id: id.toString())));
+        },
         child: CachedNetworkImage(
-          height:   MediaQuery.of(context).size.width > 900
-                      ? MediaQuery.of(context).size.height * 0.6
-                      : MediaQuery.of(context).size.height *  0.4,
-              
+          height: MediaQuery.of(context).size.width > 900
+              ? MediaQuery.of(context).size.height * 0.6
+              : MediaQuery.of(context).size.height * 0.4,
           width: width,
-          imageUrl:
-              "https://image.tmdb.org/t/p/w500$path",
+          imageUrl: "https://image.tmdb.org/t/p/w500$path",
           fit: BoxFit.cover,
           imageBuilder: (context, imageProvider) {
             return Container(

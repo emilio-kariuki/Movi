@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movistar/UI/Home/Widget/LoadingMovieShimmer.dart';
-import 'package:movistar/UI/Home/Widget/MovieWidget.dart';
+import 'package:movistar/UI/Widget/MovieWidget.dart';
+
 import 'package:movistar/models/MovieModel.dart';
 
-import '../../../blocs/bloc/home_bloc.dart';
 
 class TopRatedMovies extends StatelessWidget {
   final MovieModel  state;

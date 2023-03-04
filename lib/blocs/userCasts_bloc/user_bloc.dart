@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:movistar/models/UserFilmsModel.dart';
 import 'package:movistar/models/userModel.dart';
-import 'package:movistar/repo/repo.dart';
+import 'package:movistar/Repository/repo.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';

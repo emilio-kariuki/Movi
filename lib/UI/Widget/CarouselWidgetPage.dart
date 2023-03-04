@@ -2,9 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movistar/UI/Home/Widget/CarouselImage.dart';
+import 'package:movistar/UI/Widget/CarouselImage.dart';
+import 'package:movistar/blocs/Homebloc/home_bloc.dart';
 
-import '../../../blocs/bloc/home_bloc.dart';
 
 class CarouselWidget extends StatelessWidget {
   const CarouselWidget({super.key});

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:movistar/models/TrendingModel.dart';
-import 'package:movistar/repo/repo.dart';
+import 'package:movistar/Repository/repo.dart';
 
 import '../../models/GenreMovieModel.dart';
 import '../../models/MovieModel.dart';
