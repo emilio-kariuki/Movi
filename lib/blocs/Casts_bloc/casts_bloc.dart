@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:movistar/models/MovieCastsModel.dart';
-import 'package:movistar/repo/repo.dart';
+import 'package:movistar/Repository/repo.dart';
 
 part 'casts_event.dart';
 part 'casts_state.dart';

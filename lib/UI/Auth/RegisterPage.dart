@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movistar/Repository/AuthRepository.dart';
+import 'package:movistar/UI/Auth/LoginPage.dart';
+import 'package:movistar/UI/Home/HomePage.dart';
 import 'package:movistar/UI/Widget/AuthButton.dart';
 import 'package:movistar/UI/Widget/InputField.dart';
 import 'package:movistar/UI/Widget/SvgButton.dart';
@@ -15,6 +17,7 @@ import 'package:movistar/blocs/Auth/auth_bloc.dart';
 import 'package:movistar/blocs/Authentication/authentication_bloc.dart';
 
 class Register extends StatefulWidget {
+  final route = '/register';
   const Register({super.key});
 
   @override
@@ -26,6 +29,8 @@ class _RegisterState extends State<Register> {
   final FocusNode emailfocusNode = FocusNode();
   final passwordController = TextEditingController();
   final FocusNode passwordfocusNode = FocusNode();
+  final nameController = TextEditingController();
+  final FocusNode namefocusNode = FocusNode();
 
   void _onWidgetDidBuild(Function callback) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -44,7 +49,7 @@ class _RegisterState extends State<Register> {
         sharedPreferenceManager: SharedPreferenceManager(),
       ),
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -54,11 +59,11 @@ class _RegisterState extends State<Register> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: height * 0.05,
+                    height: height * 0.01,
                   ),
                   const Center(
                     child: SvgContainer(
-                      svgPath: 'lib/Assets/relax.svg',
+                      svgPath: 'lib/assets/relax.svg',
                       height: 200,
                       width: 200,
                     ),
@@ -71,8 +76,17 @@ class _RegisterState extends State<Register> {
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                      color: Color(0xff666666),
                     ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  InputField(
+                    focusNode: namefocusNode,
+                    controller: nameController,
+                    label: "Name",
+                    hint: "Name",
                   ),
                   const SizedBox(
                     height: 15,
@@ -99,7 +113,9 @@ class _RegisterState extends State<Register> {
                     builder: (context, state) {
                       if (state is AuthLoginSuccess) {
                         _onWidgetDidBuild(() async {
-                          Navigator.of(context).pushReplacementNamed('/home');
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => Home()));
                         });
                       }
                       return state is AuthLoginLoading
@@ -111,7 +127,7 @@ class _RegisterState extends State<Register> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 30),
                               child: AuthButton(
-                                text: "Login",
+                                text: "Register",
                                 onPressed: () {
                                   emailfocusNode.unfocus();
                                   passwordfocusNode.unfocus();
@@ -129,7 +145,7 @@ class _RegisterState extends State<Register> {
                                     });
                                   } else {
                                     BlocProvider.of<AuthBloc>(context).add(
-                                        LoginButtonPressed(
+                                        RegisterButtonPressed(
                                             email: emailController.text,
                                             password: passwordController.text));
                                   }
@@ -149,14 +165,16 @@ class _RegisterState extends State<Register> {
                     child: Text.rich(TextSpan(
                       children: [
                         const TextSpan(
-                          text: "Already have an account? ",
+                          text: "Aleady have an account? ",
                           style:
                               TextStyle(color: Color(0xff666666), fontSize: 14),
                         ),
                         TextSpan(
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              context.goNamed('login');
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) => const Login()));
                             },
                           text: "Login",
                           style: const TextStyle(
@@ -207,17 +225,17 @@ class _RegisterState extends State<Register> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SvgButton(
-                          svgPath: "lib/Assets/google.svg",
+                          svgPath: "lib/assets/google.svg",
                           onPressed: () {},
-                          color: const Color(0xff666666),
+                          color: const Color.fromARGB(255, 246, 246, 246),
                           borderRadius: 15,
                           height: 55,
                           elevation: 0,
                           width: width * 0.3),
                       SvgButton(
-                          svgPath: "lib/Assets/twitter.svg",
+                          svgPath: "lib/assets/twitter.svg",
                           onPressed: () {},
-                          color: const Color(0xff666666),
+                          color: const Color.fromARGB(255, 246, 246, 246),
                           borderRadius: 15,
                           elevation: 0,
                           height: 55,

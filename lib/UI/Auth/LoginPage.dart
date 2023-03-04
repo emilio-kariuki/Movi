@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movistar/Repository/AuthRepository.dart';
+import 'package:movistar/UI/Auth/RegisterPage.dart';
+import 'package:movistar/UI/Home/HomePage.dart';
 import 'package:movistar/UI/Widget/AuthButton.dart';
 import 'package:movistar/UI/Widget/InputField.dart';
 import 'package:movistar/UI/Widget/SvgButton.dart';
@@ -58,7 +60,7 @@ class _LoginState extends State<Login> {
                   ),
                   const Center(
                     child: SvgContainer(
-                      svgPath: 'lib/Assets/relax.svg',
+                      svgPath: 'lib/assets/relax.svg',
                       height: 200,
                       width: 200,
                     ),
@@ -71,7 +73,7 @@ class _LoginState extends State<Login> {
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                      color: Color(0xff666666),
                     ),
                   ),
                   const SizedBox(
@@ -99,7 +101,9 @@ class _LoginState extends State<Login> {
                     builder: (context, state) {
                       if (state is AuthLoginSuccess) {
                         _onWidgetDidBuild(() async {
-                          Navigator.of(context).pushReplacementNamed('/home');
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => Home()));
                         });
                       }
                       return state is AuthLoginLoading
@@ -156,7 +160,9 @@ class _LoginState extends State<Login> {
                         TextSpan(
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              context.goNamed('register');
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) => const Register()));
                             },
                           text: "Sign Up",
                           style: const TextStyle(
@@ -207,17 +213,17 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SvgButton(
-                          svgPath: "lib/Assets/google.svg",
+                          svgPath: "lib/assets/google.svg",
                           onPressed: () {},
-                          color: const Color(0xff666666),
+                          color: const Color.fromARGB(255, 246, 246, 246),
                           borderRadius: 15,
                           height: 55,
                           elevation: 0,
                           width: width * 0.3),
                       SvgButton(
-                          svgPath: "lib/Assets/twitter.svg",
+                          svgPath: "lib/assets/twitter.svg",
                           onPressed: () {},
-                          color: const Color(0xff666666),
+                          color: const Color.fromARGB(255, 246, 246, 246),
                           borderRadius: 15,
                           elevation: 0,
                           height: 55,

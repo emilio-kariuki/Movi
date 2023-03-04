@@ -1,22 +1,34 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movistar/Repository/AuthRepository.dart';
 import 'package:movistar/UI/Auth/LoginPage.dart';
+import 'package:movistar/UI/Auth/LoginPageWeb.dart';
 import 'package:movistar/UI/Auth/RegisterPage.dart';
 import 'package:movistar/UI/Details/Cast/CastWidgetPage.dart';
 import 'package:movistar/UI/Details/MovieDetailsPage.dart';
 import 'package:movistar/UI/Home/HomePage.dart';
 import 'package:movistar/UI/Home/SearchPage.dart';
+import 'package:movistar/Util/Responsive.dart';
+import 'package:movistar/Util/SharedPreferencesManager.dart';
+import 'package:movistar/blocs/Auth/auth_bloc.dart';
+import 'package:movistar/blocs/Authentication/authentication_bloc.dart';
 import 'package:movistar/blocs/Casts_bloc/casts_bloc.dart';
 import 'package:movistar/blocs/Homebloc/home_bloc.dart';
 import 'package:movistar/blocs/SearchMovie/search_movie_bloc.dart';
 import 'package:movistar/blocs/movieDetails_bloc/movie_details_bloc.dart';
 import 'package:movistar/blocs/movieGenre_bloc/movie_genre_bloc.dart';
 import 'package:movistar/blocs/similar_bloc/similar_bloc.dart';
+   import 'firebase_options.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+ await Firebase.initializeApp(
+   options: DefaultFirebaseOptions.currentPlatform,
+ );
+  
   runApp(const MyApp());
 }
 
@@ -25,81 +37,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<MovieDetailsBloc>(
-          create: (context) =>
-              MovieDetailsBloc()..add(GetMovieDetails(movieId: 24)),
-        ),
-        BlocProvider<CastsBloc>(
-          create: (context) => CastsBloc()..add(GetCasts(movieId: 24)),
-        ),
-        BlocProvider<SimilarBloc>(
-          create: (context) => SimilarBloc()..add(GetSimilar(movieId: 24)),
-        ),
-        BlocProvider<MovieGenreBloc>(
-          create: (context) => MovieGenreBloc()..add(GetMovieGenre()),
-        ),
-        BlocProvider<SearchMovieBloc>(
-            create: (context) =>
-                SearchMovieBloc()..add(GetMovie(title: "g", page: 1))),
-        BlocProvider<HomeBloc>(
-          create: (context) => HomeBloc()..add(GetHome(page: 1)),
-        ),
-      ],
-      child: MaterialApp.router(
-        
-        scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {
+    return BlocProvider(
+      create: (context) => AuthenticationBloc()..add(AppStarted()),
+      child: MaterialApp(
+        scrollBehavior:
+            const MaterialScrollBehavior().copyWith(dragDevices: {
           PointerDeviceKind.mouse,
           PointerDeviceKind.touch,
         }),
-        routerDelegate: _router.routerDelegate,
-        routeInformationParser: _router.routeInformationParser,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
-        
+        home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+          builder: (context, state) {
+            if (state is AuthenticationUnitialized) {
+              return Responsive.isMobile(context)
+                  ? const Login()
+                  : const Login();
+            } else if (state is AuthenticationAuthenticated) {
+              return Home();
+            } else if (state is AuthenticationUnauthenticated) {
+              return Responsive.isMobile(context)
+                  ? const Login()
+                  : const Login();
+            } else {
+              return const CircularProgressIndicator();
+            }
+          },
+        ),
       ),
     );
   }
 }
-
-final GoRouter _router = GoRouter(
-  routes: [
-    GoRoute(
-      name: 'home',
-      path: '/home',
-      builder: (BuildContext context, GoRouterState state) {
-        return Home();
-      },
-    ),
-    GoRoute(
-      path: '/movieDetails',
-      name: 'movieDetails',
-      builder: (context, state) => MovieDetails(
-        id: state.queryParams['id'] ?? '',
-      ),
-    ),
-    GoRoute(
-        path: '/castDetails',
-        name: 'castDetails',
-        builder: (context, state) =>
-            CastDetails(id: state.queryParams['id'] ?? '')),
-    GoRoute(
-      path: "/search",
-      name: "search",
-      builder: (context, state) => const SearchPage(),
-    ),
-    GoRoute(
-      path: "/",
-      name: "login",
-      builder: (context, state) => const Login(),
-    ),
-    GoRoute(
-      path: "/register",
-      name: "register",
-      builder: (context, state) => const Register(),
-    ),
-  ],
-);

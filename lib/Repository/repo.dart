@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movistar/UI/Home/Widget/TrendingMoviesPage.dart';
 import 'package:movistar/models/GenreMovieModel.dart';
 import 'package:movistar/models/MovieCastsModel.dart';
 import 'package:movistar/models/MovieDetailsModel.dart';

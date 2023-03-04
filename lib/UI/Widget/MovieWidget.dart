@@ -1,52 +1,57 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movistar/blocs/userCasts_bloc/user_bloc.dart';
+import 'package:movistar/UI/Details/MovieDetailsPage.dart';
+import 'package:movistar/Util/Responsive.dart';
 
-class CastsWidget extends StatelessWidget {
-  final String? posterPath;
-  final String castId;
-  final String name;
-  final String role;
-  const CastsWidget(
-      {super.key,
-      required this.posterPath,
-      required this.castId,
-      required this.name,
-      required this.role});
+class MoviesWidget extends StatelessWidget {
+  const MoviesWidget({
+    super.key,
+    required this.title,
+    required this.posterPath,
+    required this.id,
+  });
+
+  final int id;
+  final String posterPath;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 10, ),
+      padding: EdgeInsets.only(
+          right: Responsive.isDesktop(context) ? 20 : 5, top: 10, bottom: 10),
       child: SizedBox(
-        // height: MediaQuery.of(context).size.height * 0.2,
+        height: MediaQuery.of(context).size.width > 900
+            ? MediaQuery.of(context).size.height * 0.3
+            : MediaQuery.of(context).size.height * 0.2,
         width: MediaQuery.of(context).size.width > 900
             ? MediaQuery.of(context).size.width * 0.12
-            : MediaQuery.of(context).size.width * 0.27 ,
+            : MediaQuery.of(context).size.width * 0.31,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GestureDetector(
               onTap: () {
-                debugPrint("cast id is $castId");
-                context.pushNamed("castDetails", queryParams: {
-                  "id": castId,
-                });
-                
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => MovieDetails(
+                          id: id.toString(),
+                        )));
               },
               child: CachedNetworkImage(
-                height: MediaQuery.of(context).size.height > 400
-                    ? MediaQuery.of(context).size.height * 0.2
+                height: MediaQuery.of(context).size.width > 900
+                    ? MediaQuery.of(context).size.height * 0.3
                     : MediaQuery.of(context).size.height * 0.2,
-                imageUrl: "https://image.tmdb.org/t/p/w500$posterPath",
+                width: MediaQuery.of(context).size.width > 900
+                    ? MediaQuery.of(context).size.width * 0.12
+                    : MediaQuery.of(context).size.width * 0.3,
+                imageUrl: posterPath,
                 fit: BoxFit.cover,
                 imageBuilder: (context, imageProvider) {
                   return Container(
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                      borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
                         image: imageProvider,
                         fit: BoxFit.cover,
@@ -66,29 +71,17 @@ class CastsWidget extends StatelessWidget {
                 ),
               ),
             ),
-            MediaQuery.of(context).size.width> 900 ? const SizedBox(
-              height: 10,
-            ) : Container(),
-            Text(
-              name,
-              // overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold),
-            ),
             const SizedBox(
-              height: 1,
+              height: 10,
             ),
             Text(
-              role,
+              title,
+              overflow: TextOverflow.clip,
               maxLines: 1,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  fontSize: 12,
+                  color: Colors.white,
+                  fontSize: 15,
                   fontWeight: FontWeight.bold),
             ),
           ],

@@ -50,6 +50,7 @@ dependencies:
   pagination_flutter: ^0.0.8
   shared_preferences: ^2.0.18
   firebase_auth: ^4.2.2
+  firebase_core: ^2.7.0
 
 dev_dependencies:
   flutter_test:

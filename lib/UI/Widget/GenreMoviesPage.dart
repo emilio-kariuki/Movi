@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movistar/UI/Home/Widget/MovieWidget.dart';
+import 'package:movistar/UI/Widget/MovieWidget.dart';
 import '../../../models/GenreMovieModel.dart';
 
 

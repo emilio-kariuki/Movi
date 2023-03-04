@@ -30,7 +30,7 @@ class InputField extends StatelessWidget {
         Text(
           label,
           style: GoogleFonts.roboto(
-            color: Colors.white,
+            color: const Color(0xff666666),
             fontSize: 15,
             fontWeight: FontWeight.w400,
           ),
@@ -41,13 +41,12 @@ class InputField extends StatelessWidget {
         SizedBox(
           height: 50,
           child: TextFormField(
-            focusNode: focusNode,
             controller: controller,
             enabled: true,
             maxLines: maxLines,
             keyboardType: inputType,
             style: GoogleFonts.roboto(
-              color: Colors.white,
+            color: const Color(0xff666666),
               fontSize: 15,
               fontWeight: FontWeight.w400,
             ),
@@ -55,15 +54,16 @@ class InputField extends StatelessWidget {
             decoration: InputDecoration(
               hintText: hint,
               hintStyle: GoogleFonts.roboto(
-                color: Colors.white,
+            color: const Color(0xff666666),
                 fontSize: 15,
                 fontWeight: FontWeight.w400,
               ),
               border:  const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 borderSide: BorderSide(
-                  color: Color(0xff666666),
+            color: Color(0xff666666),
                   width: 1,
+                  style: BorderStyle.solid
                 ),
               ),
               focusedBorder: const OutlineInputBorder(
