@@ -24,7 +24,10 @@ class SvgButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      constraints: BoxConstraints(
+        maxWidth: 100
+      ),
       height: height,
       width: width,
       child: ElevatedButton(

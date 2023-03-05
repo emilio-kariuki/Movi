@@ -38,7 +38,10 @@ class InputField extends StatelessWidget {
         const SizedBox(
           height: 4,
         ),
-        SizedBox(
+        Container(
+          constraints: BoxConstraints(
+            maxWidth: 400
+          ),
           height: 50,
           child: TextFormField(
             controller: controller,

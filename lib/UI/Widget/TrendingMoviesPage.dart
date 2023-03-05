@@ -20,6 +20,7 @@ class TrendingMovies extends StatelessWidget {
               itemCount: state.results.length,
               itemBuilder: (context, index) {
                 return MoviesWidget(
+                   voteAverage: state.results[index].voteAverage,
                   id: state.results[index].id,
                   title: state.results[index].title ?? "unknown",
                   posterPath:
