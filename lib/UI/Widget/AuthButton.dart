@@ -22,7 +22,10 @@ class AuthButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      constraints: const BoxConstraints(
+        maxWidth: 300
+      ),
       height: height,
       width: width,
       child: ElevatedButton(

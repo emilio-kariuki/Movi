@@ -21,6 +21,7 @@ class GenreMovies extends StatelessWidget {
               itemCount: state.items.length,
               itemBuilder: (context, index) {
                 return MoviesWidget(
+                  voteAverage: state.items[index].voteAverage,
                   id: state.items[index].id,
                   title: state.items[index].title,
                   posterPath:

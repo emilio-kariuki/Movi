@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movistar/UI/Home/Widget/MovieWidget.dart';
+import 'package:movistar/UI/Widget/MovieWidget.dart';
 import 'package:movistar/models/SearchMovieModel.dart';
 
 class SearchDesignPage extends StatelessWidget {
   const SearchDesignPage({super.key, required this.movie, required this.pop});
 
   final SearchModel movie;
-
   final bool pop;
 
   @override

@@ -9,7 +9,9 @@ class MovieDetailsLoading extends MovieDetailsState {}
 
 class MovieDetailsLoaded extends MovieDetailsState {
   final Movie movieDetails;
-  MovieDetailsLoaded(this.movieDetails);
+  final Keywords keywords;
+  final Review reviews;
+  MovieDetailsLoaded(this.movieDetails, this.keywords, this.reviews);
 }
 
 class MovieDetailsError extends MovieDetailsState {

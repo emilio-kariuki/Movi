@@ -21,8 +21,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
           if (isLoggedIn) {
             authenticationBloc.add(LoggedIn());
-            emit(AuthLoginSuccess());
             await sharedPreferenceManager.setLoginStatus(status: isLoggedIn);
+            emit(AuthLoginSuccess());
+            
           } else {
             emit(const AuthLoginError(message: 'login failed'));
           }
@@ -40,8 +41,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
           if (isLoggedIn) {
             authenticationBloc.add(LoggedIn());
-            emit(AuthRegisterSuccess());
             await sharedPreferenceManager.setLoginStatus(status: isLoggedIn);
+            emit(AuthRegisterSuccess());
+            
           } else {
             emit(const AuthRegisterError(message: 'registration failed'));
           }

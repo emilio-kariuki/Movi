@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movistar/UI/Details/MovieDetailsPage.dart';
 import 'package:movistar/Util/Responsive.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class MoviesWidget extends StatelessWidget {
   const MoviesWidget({
@@ -10,11 +11,13 @@ class MoviesWidget extends StatelessWidget {
     required this.title,
     required this.posterPath,
     required this.id,
+    this.voteAverage = 0.7,
   });
 
   final int id;
   final String posterPath;
   final String title;
+  final double ?voteAverage;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +41,8 @@ class MoviesWidget extends StatelessWidget {
                     builder: (context) => MovieDetails(
                           id: id.toString(),
                         )));
+
+                debugPrint("the movie id is $id");
               },
               child: CachedNetworkImage(
                 height: MediaQuery.of(context).size.width > 900
