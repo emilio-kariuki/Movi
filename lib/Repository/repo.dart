@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movistar/models/GenreMovieModel.dart';
+import 'package:movistar/models/KeywordsModel.dart';
 import 'package:movistar/models/MovieCastsModel.dart';
 import 'package:movistar/models/MovieDetailsModel.dart';
 import 'package:movistar/models/MovieGenreModel.dart';
 import 'package:movistar/models/MovieModel.dart';
 import 'package:http/http.dart' as http;
+import 'package:movistar/models/ReviewModel.dart';
 import 'package:movistar/models/SearchMovieModel.dart';
 import 'package:movistar/models/TrendingModel.dart';
 import 'package:movistar/models/UserFilmsModel.dart';
@@ -45,12 +47,29 @@ class Repository {
     return trendingFromJson(response);
   }
 
+    static Future<Keywords> getMovieKeywords({required int id}) async {
+    String response = await getResponse(
+      url:
+          "https://api.themoviedb.org/3/movie/$id/keywords?api_key=502e894cf5940df8a65af3537e812b5c&language=en-US&page=1",
+    );
+
+    return keywordsFromJson(response);
+  }
+
   static Future<MovieModel> getTopRatedMovies({int page = 1}) async {
     String response = await getResponse(
       url:
           "https://api.themoviedb.org/3/movie/top_rated?api_key=502e894cf5940df8a65af3537e812b5c&page=${page}l&language=en-US",
     );
     return movieModelFromJson(response);
+  }
+
+  static Future<Review> getMovieReviews({int page = 1, required int id}) async {
+    String response = await getResponse(
+      url:
+          "https://api.themoviedb.org/3/movie/$id/reviews?api_key=502e894cf5940df8a65af3537e812b5c&page=${page}l&language=en-US",
+    );
+    return reviewFromJson(response);
   }
 
   static Future<GenreMovie> getGenreMovies(
