@@ -1,0 +1,154 @@
+{
+  "project_info": {
+    "project_number": "459683322029",
+    "project_id": "chatfri",
+    "storage_bucket": "chatfri.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459683322029:android:dfac0f23fe2c9317350e24",
+        "android_client_info": {
+          "package_name": "com.example.cookbook1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459683322029-tbidrkdekh53a8dvh9pf6chqh9eqorsj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo4lHE6HzayMY1D2_NJf23OpK9Z3pyS_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459683322029-tbidrkdekh53a8dvh9pf6chqh9eqorsj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "459683322029-7nrr8k6i68g83u6qvoed1fr4asjgdlm1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.movistar"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459683322029:android:b495eb6969a21ec2350e24",
+        "android_client_info": {
+          "package_name": "com.example.movi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459683322029-tbidrkdekh53a8dvh9pf6chqh9eqorsj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo4lHE6HzayMY1D2_NJf23OpK9Z3pyS_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459683322029-tbidrkdekh53a8dvh9pf6chqh9eqorsj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "459683322029-7nrr8k6i68g83u6qvoed1fr4asjgdlm1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.movistar"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459683322029:android:8c806b17140991d2350e24",
+        "android_client_info": {
+          "package_name": "com.example.movistar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459683322029-tbidrkdekh53a8dvh9pf6chqh9eqorsj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo4lHE6HzayMY1D2_NJf23OpK9Z3pyS_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459683322029-tbidrkdekh53a8dvh9pf6chqh9eqorsj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "459683322029-7nrr8k6i68g83u6qvoed1fr4asjgdlm1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.movistar"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459683322029:android:8468a00f33a95f3f350e24",
+        "android_client_info": {
+          "package_name": "com.example.streamsdk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459683322029-tbidrkdekh53a8dvh9pf6chqh9eqorsj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo4lHE6HzayMY1D2_NJf23OpK9Z3pyS_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459683322029-tbidrkdekh53a8dvh9pf6chqh9eqorsj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "459683322029-7nrr8k6i68g83u6qvoed1fr4asjgdlm1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.movistar"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
