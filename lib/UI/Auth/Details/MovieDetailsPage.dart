@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movi/Repository/FirebaseRepository.dart';
 import 'package:movi/UI/Home/GenreMovies.dart';
-import 'package:movi/UI/Widget/b%20.dart';
+import 'package:movi/UI/Home/KeywordMovies.dart';
+import 'package:movi/UI/Home/CastPage.dart';
 import 'package:movi/UI/Widget/DrawerWidget.dart';
 import 'package:movi/UI/Widget/MovieWidget.dart';
 import 'package:movi/UI/Widget/TitleWidget.dart';
@@ -228,9 +231,10 @@ class _MovieDetailsState extends State<MovieDetails> {
                                               .then((value) {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(const SnackBar(
-                                                  backgroundColor: Colors.green,
-                                                  behavior: SnackBarBehavior.floating,
-                                                  width: 250,
+                                              backgroundColor: Colors.green,
+                                              behavior:
+                                                  SnackBarBehavior.floating,
+                                              width: 250,
                                               content: Text(
                                                   "Movie added to your list"),
                                             ));
@@ -341,98 +345,161 @@ class _MovieDetailsState extends State<MovieDetails> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const Text(
-                                    "Keywords",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.normal,
-                                        letterSpacing: 0.1),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Container(
-                                    constraints: BoxConstraints(
-                                        maxHeight: 30,
-                                        maxWidth:
-                                            MediaQuery.of(context).size.width *
-                                                0.6),
-                                    child: SizedBox(
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount:
-                                            state.keywords.keywords.length,
-                                        itemBuilder: (context, index) {
-                                          return Container(
-                                            margin: const EdgeInsets.symmetric(
-                                                horizontal: 2),
-                                            padding: const EdgeInsets.all(5),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                              color: Colors.black,
+                                  state.keywords.keywords.isEmpty
+                                      ? Container()
+                                      : const Text(
+                                          "Keywords",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.normal,
+                                              letterSpacing: 0.1),
+                                        ),
+                                  state.keywords.keywords.isEmpty
+                                      ? Container()
+                                      : const SizedBox(
+                                          height: 10,
+                                        ),
+                                  state.keywords.keywords.isEmpty
+                                      ? Container()
+                                      : Container(
+                                          constraints: BoxConstraints(
+                                              maxHeight: 30,
+                                              maxWidth: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.6),
+                                          child: SizedBox(
+                                            child: ListView.builder(
+                                              scrollDirection: Axis.horizontal,
+                                              itemCount: state
+                                                  .keywords.keywords.length,
+                                              itemBuilder: (context, index) {
+                                                return GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                KeywordMovies(
+                                                                  keywordId: state
+                                                                      .keywords
+                                                                      .keywords[
+                                                                          index]
+                                                                      .id,
+                                                                  genreName: state
+                                                                      .keywords
+                                                                      .keywords[
+                                                                          index]
+                                                                      .name,
+                                                                )));
+                                                  },
+                                                  child: Container(
+                                                    margin: const EdgeInsets
+                                                            .symmetric(
+                                                        horizontal: 2),
+                                                    padding:
+                                                        const EdgeInsets.all(5),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      color: Colors.black,
+                                                    ),
+                                                    child: Text(
+                                                        state
+                                                            .keywords
+                                                            .keywords[index]
+                                                            .name,
+                                                        style: const TextStyle(
+                                                            color:
+                                                                Colors.white70,
+                                                            fontSize: 13,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                            letterSpacing:
+                                                                0.1)),
+                                                  ),
+                                                );
+                                              },
                                             ),
-                                            child: Text(
-                                                state.keywords.keywords[index]
-                                                    .name,
-                                                style: const TextStyle(
-                                                    color: Colors.white70,
-                                                    fontSize: 13,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                    letterSpacing: 0.1)),
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Text(
-                                    "Genres",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.normal,
-                                        letterSpacing: 0.1),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Container(
-                                    constraints: BoxConstraints(
-                                        maxHeight: 30,
-                                        maxWidth:
-                                            MediaQuery.of(context).size.width *
-                                                0.6),
-                                    child: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount:
-                                          state.movieDetails.genres.length,
-                                      itemBuilder: (context, index) {
-                                        return Container(
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 2),
-                                          padding: const EdgeInsets.all(5),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            color: Colors.black,
                                           ),
-                                          child: Text(
-                                              state.movieDetails.genres[index]
-                                                  .name,
-                                              style: const TextStyle(
-                                                  color: Colors.white70,
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.normal,
-                                                  letterSpacing: 0.1)),
-                                        );
-                                      },
-                                    ),
+                                        ),
+                                  const SizedBox(
+                                    height: 10,
                                   ),
+                                  state.movieDetails.genres.isEmpty
+                                      ? Container()
+                                      : const Text(
+                                          "Genres",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.normal,
+                                              letterSpacing: 0.1),
+                                        ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  state.movieDetails.genres.isEmpty
+                                      ? Container()
+                                      : Container(
+                                          constraints: BoxConstraints(
+                                              maxHeight: 30,
+                                              maxWidth: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.6),
+                                          child: ListView.builder(
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: state
+                                                .movieDetails.genres.length,
+                                            itemBuilder: (context, index) {
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              GenreMovies(
+                                                                genreId: state
+                                                                    .movieDetails
+                                                                    .genres[
+                                                                        index]
+                                                                    .id,
+                                                                genreName: state
+                                                                    .movieDetails
+                                                                    .genres[
+                                                                        index]
+                                                                    .name,
+                                                              )));
+                                                },
+                                                child: Container(
+                                                  margin: const EdgeInsets
+                                                      .symmetric(horizontal: 2),
+                                                  padding:
+                                                      const EdgeInsets.all(5),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                    color: Colors.black,
+                                                  ),
+                                                  child: Text(
+                                                      state.movieDetails
+                                                          .genres[index].name,
+                                                      style: const TextStyle(
+                                                          color: Colors.white70,
+                                                          fontSize: 13,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          letterSpacing: 0.1)),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
                                 ],
                               )
                             ],
@@ -554,28 +621,34 @@ class _MovieDetailsState extends State<MovieDetails> {
                                         return const Center(
                                             child: CircularProgressIndicator());
                                       } else if (state is SimilarLoaded) {
-                                        return SizedBox(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.26,
-                                          child: ListView.builder(
-                                            scrollDirection: Axis.horizontal,
-                                            itemCount:
-                                                state.similar.results.length,
-                                            itemBuilder: (context, index) {
-                                              return MoviesWidget(
-                                                id: state
-                                                    .similar.results[index].id,
-                                                title: state.similar
-                                                        .results[index].title ??
-                                                    " ",
-                                                posterPath:
-                                                    "https://image.tmdb.org/t/p/original/${state.similar.results[index].posterPath}",
+                                        return state.similar.results.isEmpty
+                                            ? Container()
+                                            : SizedBox(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.26,
+                                                child: ListView.builder(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemCount: state
+                                                      .similar.results.length,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    return MoviesWidget(
+                                                      id: state.similar
+                                                          .results[index].id,
+                                                      title: state
+                                                              .similar
+                                                              .results[index]
+                                                              .title ??
+                                                          " ",
+                                                      posterPath:
+                                                          "https://image.tmdb.org/t/p/original/${state.similar.results[index].posterPath}",
+                                                    );
+                                                  },
+                                                ),
                                               );
-                                            },
-                                          ),
-                                        );
                                       } else if (state is SimilarError) {
                                         return Center(
                                             child: Text(state.message));
@@ -1031,6 +1104,82 @@ class _MovieDetailsState extends State<MovieDetails> {
 
                                 Row(
                                   children: [
+                                    CircularPercentIndicator(
+                                      radius: 23.0,
+                                      lineWidth: 5.0,
+                                      percent:
+                                          state.movieDetails.voteAverage / 10,
+                                      center: SizedBox(
+                                        child: Text(
+                                          "${((state.movieDetails.voteAverage) * 10).toStringAsFixed(0)}%",
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12.0,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                      progressColor: Colors.green,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () async {
+                                        await FirebaseRepository()
+                                            .addUserFilm(
+                                                movie: UserMovies(
+                                          adult: state.movieDetails.adult,
+                                          backdropPath:
+                                              state.movieDetails.backdropPath,
+                                          genreIds: [],
+                                          id: state.movieDetails.id,
+                                          originalLanguage: state
+                                              .movieDetails.originalLanguage,
+                                          originalTitle:
+                                              state.movieDetails.originalTitle,
+                                          overview: state.movieDetails.overview,
+                                          popularity:
+                                              state.movieDetails.popularity,
+                                          posterPath:
+                                              state.movieDetails.posterPath,
+                                          releaseDate:
+                                              state.movieDetails.releaseDate,
+                                          title: state.movieDetails.title,
+                                          video: state.movieDetails.video,
+                                          voteAverage:
+                                              state.movieDetails.voteAverage,
+                                          voteCount:
+                                              state.movieDetails.voteCount,
+                                          belongsTo: FirebaseAuth
+                                              .instance.currentUser!.uid,
+                                        ))
+                                            .then((value) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                            backgroundColor: Colors.green,
+                                            behavior: SnackBarBehavior.floating,
+                                            width: 250,
+                                            content: Text(
+                                                "Movie added to your list"),
+                                          ));
+                                        });
+                                      },
+                                      child: Container(
+                                        height: 50,
+                                        width: 50,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xFF292929),
+                                            shape: BoxShape.circle),
+                                        child: const Icon(
+                                          Icons.star,
+                                          color: Colors.white,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
                                     Text(
                                         formatedDate(
                                             date:
@@ -1130,9 +1279,9 @@ class _MovieDetailsState extends State<MovieDetails> {
                                   height:
                                       MediaQuery.of(context).size.width > 900
                                           ? MediaQuery.of(context).size.height *
-                                              0.27
+                                              0.17
                                           : MediaQuery.of(context).size.height *
-                                              0.27,
+                                              0.18,
                                   child: BlocBuilder<CastsBloc, CastsState>(
                                     builder: (context, state) {
                                       if (state is CastsInitial) {
@@ -1176,184 +1325,186 @@ class _MovieDetailsState extends State<MovieDetails> {
                                   height: 10,
                                 ),
 
-                                BlocProvider(
-                                  create: (context) => TrailerBloc()
-                                    ..add(
-                                        GetTrailer(id: state.movieDetails.id)),
-                                  child: Builder(builder: (context) {
-                                    return BlocBuilder<TrailerBloc,
-                                        TrailerState>(
-                                      builder: (context, state) {
-                                        if (state is TrailerLoading) {
-                                          return const Center(
-                                            child: CircularProgressIndicator(),
-                                          );
-                                        } else if (state is TrailerLoaded) {
-                                          return state.trailer.results!.isEmpty
-                                              ? Container()
-                                              : Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        const Text(
-                                                          "Videos",
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 22,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              letterSpacing:
-                                                                  0.1),
-                                                        ),
-                                                        TextButton(
-                                                            onPressed: () {
-                                                              buttonCarouselController.nextPage(
-                                                                  duration: const Duration(
-                                                                      milliseconds:
-                                                                          300),
-                                                                  curve: Curves
-                                                                      .linear);
-                                                            },
-                                                            child: const Text(
-                                                              "Next",
-                                                              style: TextStyle(
-                                                                  fontSize: 16,
-                                                                  color: Colors
-                                                                      .white),
-                                                            ))
-                                                      ],
-                                                    ),
-                                                    SizedBox(
-                                                        width: MediaQuery.of(
-                                                                context)
-                                                            .size
-                                                            .width,
-                                                        child: Builder(
-                                                            builder: (context) {
-                                                          return CarouselSlider
-                                                              .builder(
-                                                            carouselController:
-                                                                buttonCarouselController,
-                                                            itemCount: state
-                                                                .trailer
-                                                                .results!
-                                                                .length,
-                                                            itemBuilder:
-                                                                (context, index,
-                                                                    realIndex) {
-                                                              //* added movie trailer
-                                                              ytmobile.YoutubePlayerController
-                                                                  controller =
-                                                                  ytmobile
-                                                                      .YoutubePlayerController(
-                                                                initialVideoId: state
-                                                                        .trailer
-                                                                        .results![
-                                                                            index]
-                                                                        .key ??
-                                                                    "CJ5yLkbrgn8",
-                                                                flags: const ytmobile
-                                                                    .YoutubePlayerFlags(
-                                                                  loop: true,
-                                                                  autoPlay:
-                                                                      false,
-                                                                  mute: false,
-                                                                ),
-                                                              );
-                                                              return Row(
-                                                                children: [
-                                                                  ytmobile
-                                                                      .YoutubePlayerBuilder(
-                                                                    onEnterFullScreen:
-                                                                        () {},
-                                                                    player: ytmobile
-                                                                        .YoutubePlayer(
-                                                                      aspectRatio:
-                                                                          16 /
-                                                                              10,
-                                                                      width: MediaQuery.of(context).size.width > 900
-                                                                          ? MediaQuery.of(context).size.width *
-                                                                              0.6
-                                                                          : MediaQuery.of(context).size.width *
-                                                                              0.75,
-                                                                      controller:
-                                                                          controller,
-                                                                      showVideoProgressIndicator:
-                                                                          true,
-                                                                      progressIndicatorColor:
-                                                                          Colors
-                                                                              .amber,
-                                                                      progressColors:
-                                                                          const ytmobile
-                                                                              .ProgressBarColors(
-                                                                        playedColor:
-                                                                            Colors.amber,
-                                                                        handleColor:
-                                                                            Colors.amberAccent,
-                                                                      ),
-                                                                      onReady:
-                                                                          () {
-                                                                        print(
-                                                                            'Player is ready.');
-                                                                      },
-                                                                    ),
-                                                                    builder:
-                                                                        (context,
-                                                                            player) {
-                                                                      return player;
-                                                                    },
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                            options:
-                                                                CarouselOptions(
-                                                                    enlargeFactor:
-                                                                        0.8,
-                                                                    // viewportFraction: 2,
-                                                                    autoPlayAnimationDuration:
-                                                                        const Duration(
-                                                                            seconds:
-                                                                                1),
-                                                                    autoPlay:
-                                                                        false,
-                                                                    onPageChanged:
-                                                                        (int i,
-                                                                            carouselPageChangedReason) {}),
-                                                          );
-                                                        })),
-                                                  ],
+                                (defaultTargetPlatform ==
+                                            TargetPlatform.android ||
+                                        defaultTargetPlatform ==
+                                            TargetPlatform.iOS)
+                                    ? BlocProvider(
+                                        create: (context) => TrailerBloc()
+                                          ..add(GetTrailer(
+                                              id: state.movieDetails.id)),
+                                        child: Builder(builder: (context) {
+                                          return BlocBuilder<TrailerBloc,
+                                              TrailerState>(
+                                            builder: (context, state) {
+                                              if (state is TrailerLoading) {
+                                                return const Center(
+                                                  child:
+                                                      CircularProgressIndicator(),
                                                 );
-                                        } else if (state is TrailerError) {
-                                          return Center(
-                                            child: Text(
-                                              state.message,
-                                              style: const TextStyle(
-                                                  color: Colors.white),
-                                            ),
+                                              } else if (state
+                                                  is TrailerLoaded) {
+                                                return state.trailer.results!
+                                                        .isEmpty
+                                                    ? Container()
+                                                    : Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              const Text(
+                                                                "Videos",
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        22,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    letterSpacing:
+                                                                        0.1),
+                                                              ),
+                                                              TextButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    buttonCarouselController.nextPage(
+                                                                        duration: const Duration(
+                                                                            milliseconds:
+                                                                                300),
+                                                                        curve: Curves
+                                                                            .linear);
+                                                                  },
+                                                                  child:
+                                                                      const Text(
+                                                                    "Next",
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            16,
+                                                                        color: Colors
+                                                                            .white),
+                                                                  ))
+                                                            ],
+                                                          ),
+                                                          SizedBox(
+                                                              width:
+                                                                  MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width,
+                                                              child: Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                return CarouselSlider
+                                                                    .builder(
+                                                                  carouselController:
+                                                                      buttonCarouselController,
+                                                                  itemCount: state
+                                                                      .trailer
+                                                                      .results!
+                                                                      .length,
+                                                                  itemBuilder:
+                                                                      (context,
+                                                                          index,
+                                                                          realIndex) {
+                                                                    //* added movie trailer
+                                                                    ytmobile.YoutubePlayerController
+                                                                        controller =
+                                                                        ytmobile
+                                                                            .YoutubePlayerController(
+                                                                      initialVideoId: state
+                                                                              .trailer
+                                                                              .results![index]
+                                                                              .key ??
+                                                                          "CJ5yLkbrgn8",
+                                                                      flags: const ytmobile
+                                                                          .YoutubePlayerFlags(
+                                                                        loop:
+                                                                            true,
+                                                                        autoPlay:
+                                                                            false,
+                                                                        mute:
+                                                                            false,
+                                                                      ),
+                                                                    );
+                                                                    return Row(
+                                                                      children: [
+                                                                        ytmobile
+                                                                            .YoutubePlayerBuilder(
+                                                                          onEnterFullScreen:
+                                                                              () {},
+                                                                          player:
+                                                                              ytmobile.YoutubePlayer(
+                                                                            aspectRatio:
+                                                                                16 / 10,
+                                                                            width: MediaQuery.of(context).size.width > 900
+                                                                                ? MediaQuery.of(context).size.width * 0.6
+                                                                                : MediaQuery.of(context).size.width * 0.75,
+                                                                            controller:
+                                                                                controller,
+                                                                            showVideoProgressIndicator:
+                                                                                true,
+                                                                            progressIndicatorColor:
+                                                                                Colors.amber,
+                                                                            progressColors:
+                                                                                const ytmobile.ProgressBarColors(
+                                                                              playedColor: Colors.amber,
+                                                                              handleColor: Colors.amberAccent,
+                                                                            ),
+                                                                            onReady:
+                                                                                () {
+                                                                              print('Player is ready.');
+                                                                            },
+                                                                          ),
+                                                                          builder:
+                                                                              (context, player) {
+                                                                            return player;
+                                                                          },
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                  options: CarouselOptions(
+                                                                      enlargeFactor: 0.8,
+                                                                      // viewportFraction: 2,
+                                                                      autoPlayAnimationDuration: const Duration(seconds: 1),
+                                                                      autoPlay: false,
+                                                                      onPageChanged: (int i, carouselPageChangedReason) {}),
+                                                                );
+                                                              })),
+                                                        ],
+                                                      );
+                                              } else if (state
+                                                  is TrailerError) {
+                                                return Center(
+                                                  child: Text(
+                                                    state.message,
+                                                    style: const TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                );
+                                              } else {
+                                                return const Center(
+                                                  child: Text(
+                                                    "Error",
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                );
+                                              }
+                                            },
                                           );
-                                        } else {
-                                          return const Center(
-                                            child: Text(
-                                              "Error",
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                          );
-                                        }
-                                      },
-                                    );
-                                  }),
-                                ),
+                                        }),
+                                      )
+                                    : Container(),
                                 const SizedBox(
                                   height: 10,
                                 ),
