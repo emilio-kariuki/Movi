@@ -18,5 +18,16 @@ class GenreBloc extends Bloc<GenreEvent, GenreState> {
         emit(GenreError(message: e.toString()));
       }
     });
+
+    on<MovieKeywordsFetched>((event, emit) async {
+      emit(KeywordsLoading());
+      try {
+        final keywords = await Repository.getMoviesInKeywords(
+            id: event.genreId, page: event.page);
+        emit(KeywordsLoaded(keywords: keywords));
+      } catch (e) {
+        emit(KeywordsError(message: e.toString()));
+      }
+    });
   }
 }
