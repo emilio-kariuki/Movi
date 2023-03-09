@@ -90,9 +90,9 @@ class _GenreMoviesState extends State<GenreMovies> {
                     return GridView.builder(
                         gridDelegate:
                             SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: Responsive.isDesktop(context) ? 9 : Responsive.isTablet(context) ? 7 :Responsive.isMobile(context) ? 3 : 3  ,
+                                crossAxisCount: Responsive.isDesktop(context) ? 8 : Responsive.isTablet(context) ? 7 :Responsive.isMobile(context) ? 3 : 3  ,
                                
-                                childAspectRatio: Responsive.isTablet(context) ? 0.5 : Responsive.isDesktop(context) ? 0.57: Responsive.isMobile(context) ? 0.58 : 0.58),
+                                childAspectRatio: Responsive.isTablet(context) ? 0.5 : Responsive.isDesktop(context) ? 0.65: Responsive.isMobile(context) ? 0.58 : 0.58),
                         itemCount: state.genres.results.length,
                         itemBuilder: (_, index) {
                           return MoviesWidget(

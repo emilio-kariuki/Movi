@@ -70,9 +70,9 @@ class CarouselWidget extends StatelessWidget {
               );
             },
             options: CarouselOptions(
-                enlargeFactor: 0.35,
+                enlargeFactor: 0.3,
                 height: MediaQuery.of(context).size.width > 900
-                    ? MediaQuery.of(context).size.height * 0.6
+                    ? MediaQuery.of(context).size.height * 0.5
                     : MediaQuery.of(context).size.height * 0.2,
                 enlargeCenterPage: true,
                 // viewportFraction: 2,

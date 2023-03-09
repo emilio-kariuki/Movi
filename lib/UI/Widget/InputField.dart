@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class InputField extends StatelessWidget {
   const InputField({
     super.key,
@@ -10,7 +9,8 @@ class InputField extends StatelessWidget {
     this.inputType = TextInputType.text,
     required this.label,
     required this.hint,
-    this.onSubmitted, required this.focusNode,
+    this.onSubmitted,
+    required this.focusNode,
   });
 
   final TextEditingController controller;
@@ -30,17 +30,19 @@ class InputField extends StatelessWidget {
         Text(
           label,
           style: GoogleFonts.roboto(
-            color: const Color(0xff666666),
+            color: Color.fromARGB(255, 196, 196, 196),
             fontSize: 15,
             fontWeight: FontWeight.w400,
           ),
         ),
         const SizedBox(
-          height: 4,
+          height: 5,
         ),
         Container(
-          constraints: BoxConstraints(
-            maxWidth: 400
+          constraints: const BoxConstraints(maxWidth: 400),
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(15)),
           ),
           height: 50,
           child: TextFormField(
@@ -49,32 +51,26 @@ class InputField extends StatelessWidget {
             maxLines: maxLines,
             keyboardType: inputType,
             style: GoogleFonts.roboto(
-            color: const Color(0xff666666),
+              color: const Color(0xff666666),
               fontSize: 15,
               fontWeight: FontWeight.w400,
             ),
             onFieldSubmitted: onSubmitted,
+            
             decoration: InputDecoration(
               hintText: hint,
               hintStyle: GoogleFonts.roboto(
-            color: const Color(0xff666666),
+                color: const Color(0xff666666),
                 fontSize: 15,
                 fontWeight: FontWeight.w400,
               ),
-              border:  const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                borderSide: BorderSide(
-            color: Color(0xff666666),
-                  width: 1,
-                  style: BorderStyle.solid
-                ),
+              border: const OutlineInputBorder(
+                borderSide: BorderSide.none,
               ),
+              
               focusedBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                borderSide: BorderSide(
-                  color: Color.fromARGB(255, 30, 136, 229),
-                  width: 1,
-                ),
+                borderSide: BorderSide.none
               ),
               contentPadding: const EdgeInsets.all(10),
             ),

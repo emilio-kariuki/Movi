@@ -24,8 +24,8 @@ class MoviesWidget extends StatelessWidget {
           right: Responsive.isDesktop(context) ? 20 : 5, top: 10, bottom: 2),
       child: SizedBox(
         height: MediaQuery.of(context).size.width > 900
-            ? MediaQuery.of(context).size.height * 0.3
-            : MediaQuery.of(context).size.height * 0.2,
+            ? MediaQuery.of(context).size.height * 0.35
+            : MediaQuery.of(context).size.height * 0.25,
         width: MediaQuery.of(context).size.width > 900
             ? MediaQuery.of(context).size.width * 0.12
             : MediaQuery.of(context).size.width * 0.31,

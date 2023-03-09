@@ -142,10 +142,9 @@ class _SearchPageState extends State<SearchPage> {
                               child: GridView.builder(
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 6,
-                                          crossAxisSpacing: 10,
-                                          mainAxisSpacing: 10,
-                                          childAspectRatio: 0.8),
+                                          crossAxisCount: 8,
+                                         
+                                          childAspectRatio: 0.65),
                                   itemCount: state.search.results.length,
                                   itemBuilder: (_, index) {
                                     return MoviesWidget(
@@ -165,17 +164,23 @@ class _SearchPageState extends State<SearchPage> {
                                   }),
                             );
                           } else if (state is SearchMovieFail) {
-                            return const Center(
-                              child: Text(
-                                "No results found",
-                                style: TextStyle(color: Colors.white),
+                            return Center(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height * 0.5,
+                                child: const Text(
+                                  "No results found",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                             );
                           } else {
-                            return const Center(
-                              child: Text(
-                                "Search for a movie",
-                                style: TextStyle(color: Colors.white),
+                            return Center(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height * 0.5,
+                                child: const Text(
+                                  "Search for a movie",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                             );
                           }
@@ -257,17 +262,18 @@ class _SearchPageState extends State<SearchPage> {
             child: Icon(
               Icons.search,
               color: Colors.white,
+              size: 20,
             ),
           ),
-          hintStyle: GoogleFonts.poppins(color: Colors.white),
+          hintStyle: GoogleFonts.poppins(color: Colors.white, fontSize: 12  ),
           hintText: "Search Movie",
           contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(color: Colors.transparent, width: 1),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(color: Colors.transparent, width: 1),
           )),
     );

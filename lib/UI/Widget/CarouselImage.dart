@@ -19,7 +19,7 @@ class CarouselImage extends StatelessWidget {
         },
         child: CachedNetworkImage(
           height: MediaQuery.of(context).size.width > 900
-              ? MediaQuery.of(context).size.height * 0.6
+              ? MediaQuery.of(context).size.height * 0.5
               : MediaQuery.of(context).size.height * 0.4,
           width: width,
           imageUrl: "https://image.tmdb.org/t/p/w500$path",
