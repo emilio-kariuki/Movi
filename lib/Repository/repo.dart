@@ -39,6 +39,14 @@ class Repository {
     return movieModelFromJson(response);
   }
 
+  static Future<MovieModel> getMoviesInKeywords(
+      {required int id, required int page}) async {
+    String response = await getResponse(
+        url:
+            "https://api.themoviedb.org/3/discover/movie?api_key=502e894cf5940df8a65af3537e812b5c&language=en-US&page=$page&with_keywords=$id");
+    return movieModelFromJson(response);
+  }
+
   static Future<MovieModel> getPopularMovies({int page = 1}) async {
     String response = await getResponse(
       url:
