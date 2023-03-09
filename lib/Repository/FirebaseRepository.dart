@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:movi/models/UserFilmsModel.dart';
 import 'package:movi/models/UserModel.dart';
 import 'package:movi/models/UserMovies.dart';
 
@@ -29,22 +30,24 @@ class FirebaseRepository {
     await auth.FirebaseAuth.instance.currentUser!.delete();
   }
 
-   getUserFilms({required String id}) async {
-    return await _firebaseFirestore
-        .collection('user')
-        .doc(id)
+   Future<List<UserMovies>> getUserFilms({required String id}) async {
+    var userFilms = await _firebaseFirestore
         .collection('films')
+        .where('belongsTo', isEqualTo: id)
         .get();
+    return userFilms.docs
+        .map((e) => UserMovies.fromJson(e.data()))
+        .toList();
   }
 
    addUserFilm({required UserMovies movie,}) async {
-    await _firebaseFirestore.collection('films').doc().set(
+    await _firebaseFirestore.collection('films').doc(movie.id.toString()).set(
           movie.toJson(),
           SetOptions(merge: true),
         );
   }
 
-   deleteUserFilm({required String id, required String filmId}) async {
+   deleteUserFilm({required String filmId}) async {
     await _firebaseFirestore.collection('films').doc(filmId).delete();
   }
 }
