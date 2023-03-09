@@ -89,6 +89,10 @@ class _CastDetailsState extends State<CastDetails> {
                                 ),
                               ),
                               Positioned.fill(
+                                top: Responsive.isDesktop(context) ||
+                                        Responsive.isTablet(context)
+                                    ? 0
+                                    : 35,
                                 bottom: Responsive.isDesktop(context) ||
                                         Responsive.isTablet(context)
                                     ? 10
@@ -118,7 +122,7 @@ class _CastDetailsState extends State<CastDetails> {
                                               : MediaQuery.of(context)
                                                       .size
                                                       .height *
-                                                  0.2,
+                                                  0.18,
                                           width:
                                               MediaQuery.of(context)
                                                           .size
@@ -207,6 +211,35 @@ class _CastDetailsState extends State<CastDetails> {
                                       ],
                                     )),
                               ),
+                              Responsive.isDesktop(context)
+                                  ? Container()
+                                  : Positioned.fill(
+                                      top: 3,
+                                      left: 10,
+                                      child: Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Container(
+                                            padding:
+                                                const EdgeInsets.only(left: 5),
+                                            height: 40,
+                                            width: 40,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: Colors.white,
+                                            ),
+                                            child: IconButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon: const Icon(
+                                                Icons.arrow_back_ios,
+                                                color: Colors.black,
+                                                size: 20,
+                                              ),
+                                            ),
+                                          )),
+                                    ),
                             ],
                           ),
                           Padding(
@@ -357,7 +390,7 @@ class _CastDetailsState extends State<CastDetails> {
                                                           MediaQuery.of(context)
                                                                   .size
                                                                   .width *
-                                                              0.2,
+                                                              0.3,
                                                       imageUrl:
                                                           "https://image.tmdb.org/t/p/original/${state.userFilms.cast[index].posterPath}",
                                                       fit: BoxFit.cover,
