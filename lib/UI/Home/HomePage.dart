@@ -1,9 +1,11 @@
 import 'dart:math';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movi/UI/Home/GenreMovies.dart';
+import 'package:movi/UI/Home/ProfilePage.dart';
 import 'package:movi/UI/Home/SearchPage.dart';
 import 'package:movi/UI/Home/ViewAll/PopularMovies.dart';
 import 'package:movi/UI/Home/ViewAll/TopRatedMovies.dart';
@@ -136,7 +138,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("movi",
+                                        Text("Movi",
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: MediaQuery.of(context)
@@ -145,76 +147,82 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                         600
                                                     ? 30
                                                     : 20)),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                      .size
-                                                      .width >
-                                                  900
-                                              ? MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.3
-                                              : MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.5,
-                                          child: TextFormField(
-                                            onTap: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (_) => BlocProvider.value(
-                                                        value: BlocProvider.of<
-                                                                SearchMovieBloc>(
-                                                            context),
-                                                        child:
-                                                            const SearchPage())),
-                                              );
-                                            },
-                                            style: GoogleFonts.poppins(
-                                                color: Colors.white),
-                                            controller: movieController,
-                                            decoration: InputDecoration(
-                                                filled: true,
-                                                fillColor: Colors.grey[800],
-                                                prefixIcon: const Padding(
-                                                  padding:
-                                                      EdgeInsets.only(left: 10),
-                                                  child: Icon(
-                                                    Icons.search,
-                                                    color: Colors.white,
-                                                    size: 20,
-                                                  ),
-                                                ),
-                                                hintStyle: GoogleFonts.poppins(
-                                                    color: Colors.white,
-                                                    fontSize: 11),
-                                                hintText: "Search Movie",
-                                                contentPadding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 10),
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: const BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1),
-                                                ),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: const BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1),
-                                                )),
-                                          ),
-                                        ),
-                                        ProfileCard(
+                                        Row(
+                                          children: [
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                          .size
+                                                          .width >
+                                                      900
+                                                  ? MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.3
+                                                  : MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.5,
+                                              child: TextFormField(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (_) => BlocProvider.value(
+                                                            value: BlocProvider.of<
+                                                                    SearchMovieBloc>(
+                                                                context),
+                                                            child:
+                                                                const SearchPage())),
+                                                  );
+                                                },
+                                                style: GoogleFonts.poppins(
+                                                    color: Colors.white),
+                                                controller: movieController,
+                                                decoration: InputDecoration(
+                                                    filled: true,
+                                                    fillColor: Colors.grey[800],
+                                                    prefixIcon: const Padding(
+                                                      padding:
+                                                          EdgeInsets.only(left: 10),
+                                                      child: Icon(
+                                                        Icons.search,
+                                                        color: Colors.white,
+                                                        size: 20,
+                                                      ),
+                                                    ),
+                                                    hintStyle: GoogleFonts.poppins(
+                                                        color: Colors.white,
+                                                        fontSize: 11),
+                                                    hintText: "Search Movie",
+                                                    contentPadding:
+                                                        const EdgeInsets.symmetric(
+                                                            horizontal: 10),
+                                                    border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(10),
+                                                      borderSide: const BorderSide(
+                                                          color: Colors.transparent,
+                                                          width: 1),
+                                                    ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(10),
+                                                      borderSide: const BorderSide(
+                                                          color: Colors.transparent,
+                                                          width: 1),
+                                                    )),
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10,),
+                                            ProfileCard(
                                           name: "Emilio Kariuki",
                                           image:
                                               "https://image.tmdb.org/t/p/original/${state.popular.results[0].posterPath}",
                                         ),
+                                          ],
+                                        ),
+                                        
                                       ],
                                     )
                                   : Padding(
@@ -232,16 +240,52 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               const Text(
-                                                "movi",
+                                                "Movi",
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 25),
                                               ),
-                                              ProfileCard(
-                                                name: "Emilio Kariuki",
-                                                image:
-                                                    "https://image.tmdb.org/t/p/original/${state.popular.results[0].posterPath}",
-                                              ),
+                                              GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const ProfilePage()));
+                                          },
+                                          child: CachedNetworkImage(
+                                            height: 40,
+                                            width: 40,
+                                            imageUrl:
+                                                "https://image.tmdb.org/t/p/original/${state.popular.results[0].posterPath}",
+                                            fit: BoxFit.cover,
+                                            imageBuilder:
+                                                (context, imageProvider) {
+                                              return Container(
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
+                                                    color: Colors.white
+                                                  ),
+                                                  image: DecorationImage(
+                                                    image: imageProvider,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            placeholder: (context, url) =>
+                                                const CircularProgressIndicator(
+                                              strokeWidth: 1,
+                                            ),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    const Icon(
+                                              Icons.error,
+                                              size: 20,
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                        ),
                                             ],
                                           ),
                                           const SizedBox(
