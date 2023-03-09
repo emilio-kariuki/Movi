@@ -27,7 +27,6 @@ class AuthRepo {
             email: email,
             id: user.uid,
             name: name,
-            image: "",
             interest: 'movies',
           ),
         );

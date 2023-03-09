@@ -127,7 +127,8 @@ class ProfilePage extends StatelessWidget {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const CircularProgressIndicator();
                   }
-                  return Column(
+                  if(snapshot.hasData){
+                    return Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -143,6 +144,9 @@ class ProfilePage extends StatelessWidget {
                               fontWeight: FontWeight.w500)),
                     ],
                   );
+                  }else{
+                    return Container();
+                  }
                 }),
             const SizedBox(height: 40),
             AuthButton(

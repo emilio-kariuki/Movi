@@ -44,39 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBDUHvUUQ5ZKha7amBNf8ewfT5uSGzPIac',
-    appId: '1:459683322029:web:bde1d9077a35d5f4350e24',
-    messagingSenderId: '459683322029',
-    projectId: 'chatfri',
-    authDomain: 'chatfri.firebaseapp.com',
-    storageBucket: 'chatfri.appspot.com',
+    apiKey: 'AIzaSyBPxcG_lm7jY9IJ5ElktW0AR2HrlqcUHso',
+    appId: '1:481728261427:web:f580c198efe483d73ba246',
+    messagingSenderId: '481728261427',
+    projectId: 'movi-93562',
+    authDomain: 'movi-93562.firebaseapp.com',
+    storageBucket: 'movi-93562.appspot.com',
+    measurementId: 'G-5EFBNRGHQK',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBo4lHE6HzayMY1D2_NJf23OpK9Z3pyS_Y',
-    appId: '1:459683322029:android:b495eb6969a21ec2350e24',
-    messagingSenderId: '459683322029',
-    projectId: 'chatfri',
-    storageBucket: 'chatfri.appspot.com',
+    apiKey: 'AIzaSyBwgkYoh15D_vaNxQhzyTh4o2vIA5hWmg8',
+    appId: '1:481728261427:android:6e7f81de6d35a03a3ba246',
+    messagingSenderId: '481728261427',
+    projectId: 'movi-93562',
+    storageBucket: 'movi-93562.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBD6Tyn1AVDeOB2cN4NeKUA3Jo6Xj3VjUk',
-    appId: '1:459683322029:ios:5db3a2b7fc4e18fa350e24',
-    messagingSenderId: '459683322029',
-    projectId: 'chatfri',
-    storageBucket: 'chatfri.appspot.com',
-    iosClientId: '459683322029-0j5ovf972jaf5208j2cuudpe6bdcnh0i.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDGdGOqRHMSfUEYLFH-zpCOSuj0wHhZc_w',
+    appId: '1:481728261427:ios:8003a894d5b2d6353ba246',
+    messagingSenderId: '481728261427',
+    projectId: 'movi-93562',
+    storageBucket: 'movi-93562.appspot.com',
+    iosClientId: '481728261427-3m7ei6mgsp9t824ftc2e6tdv87gv7gqv.apps.googleusercontent.com',
     iosBundleId: 'com.example.movi',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBD6Tyn1AVDeOB2cN4NeKUA3Jo6Xj3VjUk',
-    appId: '1:459683322029:ios:5db3a2b7fc4e18fa350e24',
-    messagingSenderId: '459683322029',
-    projectId: 'chatfri',
-    storageBucket: 'chatfri.appspot.com',
-    iosClientId: '459683322029-0j5ovf972jaf5208j2cuudpe6bdcnh0i.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDGdGOqRHMSfUEYLFH-zpCOSuj0wHhZc_w',
+    appId: '1:481728261427:ios:8003a894d5b2d6353ba246',
+    messagingSenderId: '481728261427',
+    projectId: 'movi-93562',
+    storageBucket: 'movi-93562.appspot.com',
+    iosClientId: '481728261427-3m7ei6mgsp9t824ftc2e6tdv87gv7gqv.apps.googleusercontent.com',
     iosBundleId: 'com.example.movi',
   );
 }

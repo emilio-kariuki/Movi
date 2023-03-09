@@ -6,6 +6,7 @@ import 'package:movi/models/UserMovies.dart';
 
 class FirebaseRepository {
   final _firebaseFirestore = FirebaseFirestore.instance;
+
    createUser({required User user}) async {
     await _firebaseFirestore
         .collection('user')
