@@ -45,13 +45,13 @@ class _LoginState extends State<Login> {
         sharedPreferenceManager: SharedPreferenceManager(),
       ),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center ,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
@@ -100,8 +100,31 @@ class _LoginState extends State<Login> {
                     builder: (context, state) {
                       if (state is AuthLoginSuccess) {
                         _onWidgetDidBuild(() async {
+                     
+                          Fluttertoast.showToast(
+                              msg: "Login Success",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 16.0);
+                        
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(builder: (context) => Home()));
+                        });
+                      }
+
+                      if (state is AuthLoginError) {
+                        _onWidgetDidBuild(() async {
+                          Fluttertoast.showToast(
+                              msg: state.message,
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 16.0);
                         });
                       }
                       return state is AuthLoginLoading
@@ -173,67 +196,67 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Container(
-                    constraints: const BoxConstraints(maxWidth: 300),
-                    child: Row(
-                      children: const [
-                        Expanded(
-                          child: Divider(
-                            color: Color(0xff666666),
-                            thickness: 0.3,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "OR",
-                          style: TextStyle(
-                            color: Color(0xff666666),
-                            fontSize: 15,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                          child: Divider(
-                            color: Color(0xff666666),
-                            thickness: 0.3,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  // Container(
+                  //   constraints: const BoxConstraints(maxWidth: 300),
+                  //   child: Row(
+                  //     children: const [
+                  //       Expanded(
+                  //         child: Divider(
+                  //           color: Color(0xff666666),
+                  //           thickness: 0.3,
+                  //         ),
+                  //       ),
+                  //       SizedBox(
+                  //         width: 10,
+                  //       ),
+                  //       Text(
+                  //         "OR",
+                  //         style: TextStyle(
+                  //           color: Color(0xff666666),
+                  //           fontSize: 15,
+                  //         ),
+                  //       ),
+                  //       SizedBox(
+                  //         width: 10,
+                  //       ),
+                  //       Expanded(
+                  //         child: Divider(
+                  //           color: Color(0xff666666),
+                  //           thickness: 0.3,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // const SizedBox(
+                  //   height: 20,
+                  // ),
 
                   // Google Sign In Button
-                  Container(
-                    constraints: const BoxConstraints(maxWidth: 300),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SvgButton(
-                            svgPath: "lib/assets/google.svg",
-                            onPressed: () {},
-                            color: const Color.fromARGB(255, 246, 246, 246),
-                            borderRadius: 15,
-                            height: 55,
-                            elevation: 0,
-                            width: width * 0.3),
-                        SvgButton(
-                            svgPath: "lib/assets/twitter.svg",
-                            onPressed: () {},
-                            color: const Color.fromARGB(255, 246, 246, 246),
-                            borderRadius: 15,
-                            elevation: 0,
-                            height: 55,
-                            width: width * 0.3),
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   constraints: const BoxConstraints(maxWidth: 300),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //     children: [
+                  //       SvgButton(
+                  //           svgPath: "lib/assets/google.svg",
+                  //           onPressed: () {},
+                  //           color: const Color.fromARGB(255, 246, 246, 246),
+                  //           borderRadius: 15,
+                  //           height: 55,
+                  //           elevation: 0,
+                  //           width: width * 0.3),
+                  //       SvgButton(
+                  //           svgPath: "lib/assets/twitter.svg",
+                  //           onPressed: () {},
+                  //           color: const Color.fromARGB(255, 246, 246, 246),
+                  //           borderRadius: 15,
+                  //           elevation: 0,
+                  //           height: 55,
+                  //           width: width * 0.3),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ),
