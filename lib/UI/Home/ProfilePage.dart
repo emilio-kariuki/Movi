@@ -1,9 +1,13 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
+import 'package:movi/Repository/AuthRepository.dart';
 import 'package:movi/Repository/FirebaseRepository.dart';
 import 'package:movi/UI/Auth/LoginPage.dart';
+import 'package:movi/UI/Home/FavouritesMoviePage.dart';
 import 'package:movi/UI/Widget/AuthButton.dart';
 import 'package:movi/UI/Widget/SvgContainer.dart';
 import 'package:movi/models/UserModel.dart';
@@ -32,9 +36,11 @@ class ProfilePage extends StatelessWidget {
               Icons.more_vert,
               color: Colors.white,
             ),
-            onSelected: (value) {
+            onSelected: (value) async{
               switch (value) {
                 case users.logout:
+                
+                await AuthRepo().logout();
                   Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => const Login()));
                   break;
@@ -65,8 +71,8 @@ class ProfilePage extends StatelessWidget {
                                     text: "Yes",
                                     onPressed: () {
                                       FirebaseRepository().deleteUser(
-                                          id: auth.FirebaseAuth
-                                              .instance.currentUser!.uid);
+                                          id: auth.FirebaseAuth.instance
+                                              .currentUser!.uid);
                                     },
                                   ),
                                   const Spacer(),
@@ -141,7 +147,10 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(height: 40),
             AuthButton(
               text: "Favourite",
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const FavouriteMovies()));
+              },
               color: Colors.blue,
               borderRadius: 20,
               height: 50,
@@ -150,7 +159,8 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(height: 20),
             AuthButton(
               text: "Logout",
-              onPressed: () {
+              onPressed: () async{
+                await AuthRepo().logout();
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => const Login()));
               },
