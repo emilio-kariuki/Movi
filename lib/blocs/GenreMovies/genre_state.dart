@@ -28,3 +28,26 @@ class GenreError extends GenreState {
   @override
   List<Object> get props => [message];
 }
+
+class KeywordsInitial extends GenreState {}
+
+class KeywordsLoading extends GenreState {}
+
+class KeywordsLoaded extends GenreState {
+  final MovieModel keywords;
+
+  const KeywordsLoaded({required this.keywords});
+
+  @override
+  List<Object> get props => [keywords];
+}
+
+class KeywordsError extends GenreState {
+  final String message;
+
+  const KeywordsError({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
