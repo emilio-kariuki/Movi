@@ -1153,7 +1153,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                                           belongsTo: FirebaseAuth
                                               .instance.currentUser!.uid,
                                         ))
-                                            .then((value) {
+                                            .then((_) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(const SnackBar(
                                             backgroundColor: Colors.green,
