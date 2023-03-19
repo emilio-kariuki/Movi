@@ -27,6 +27,8 @@ class _LoginState extends State<Login> {
   final FocusNode emailfocusNode = FocusNode();
   final passwordController = TextEditingController();
   final FocusNode passwordfocusNode = FocusNode();
+  bool obscureText1 = false;
+  bool obsucreText2 = false;
 
   void _onWidgetDidBuild(Function callback) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -51,7 +53,7 @@ class _LoginState extends State<Login> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center ,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
@@ -88,10 +90,25 @@ class _LoginState extends State<Login> {
                     height: 15,
                   ),
                   InputField(
+                    obscureText: obscureText1,
                     focusNode: passwordfocusNode,
                     controller: passwordController,
                     label: "Password",
                     hint: "password",
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          obscureText1 = !obscureText1;
+                        });
+                      },
+                      child: Icon(
+                        obscureText1
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: Colors.grey,
+                        size: 20,
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 30,
@@ -100,7 +117,6 @@ class _LoginState extends State<Login> {
                     builder: (context, state) {
                       if (state is AuthLoginSuccess) {
                         _onWidgetDidBuild(() async {
-                     
                           Fluttertoast.showToast(
                               msg: "Login Success",
                               toastLength: Toast.LENGTH_SHORT,
@@ -109,7 +125,7 @@ class _LoginState extends State<Login> {
                               backgroundColor: Colors.green,
                               textColor: Colors.white,
                               fontSize: 16.0);
-                        
+
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(builder: (context) => Home()));
                         });

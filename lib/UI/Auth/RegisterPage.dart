@@ -30,6 +30,7 @@ class _RegisterState extends State<Register> {
   final FocusNode passwordfocusNode = FocusNode();
   final nameController = TextEditingController();
   final FocusNode namefocusNode = FocusNode();
+  bool obscureText = true;
 
   void _onWidgetDidBuild(Function callback) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -54,7 +55,7 @@ class _RegisterState extends State<Register> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center ,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
@@ -100,10 +101,23 @@ class _RegisterState extends State<Register> {
                     height: 15,
                   ),
                   InputField(
+                    obscureText: obscureText,
                     focusNode: passwordfocusNode,
                     controller: passwordController,
                     label: "Password",
                     hint: "password",
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        obscureText ? Icons.visibility : Icons.visibility_off,
+                        color: Colors.grey,
+                        size: 20,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
+                      },
+                    ),
                   ),
                   const SizedBox(
                     height: 30,
@@ -159,7 +173,7 @@ class _RegisterState extends State<Register> {
                                           gravity: ToastGravity.BOTTOM,
                                           timeInSecForIosWeb: 1,
                                           backgroundColor: Colors.red,
-                                          textColor: Colors. white,
+                                          textColor: Colors.white,
                                           fontSize: 16.0);
                                     });
                                   } else {

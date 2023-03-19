@@ -10,7 +10,9 @@ class InputField extends StatelessWidget {
     required this.label,
     required this.hint,
     this.onSubmitted,
+    this.obscureText,
     required this.focusNode,
+    this.suffixIcon,
   });
 
   final TextEditingController controller;
@@ -20,6 +22,8 @@ class InputField extends StatelessWidget {
   final String hint;
   final Function(String)? onSubmitted;
   final FocusNode focusNode;
+  final bool ?obscureText;
+  final Widget ?suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +50,8 @@ class InputField extends StatelessWidget {
           ),
           height: 50,
           child: TextFormField(
+            
+            obscureText: obscureText ?? false,
             controller: controller,
             enabled: true,
             maxLines: maxLines,
@@ -58,6 +64,7 @@ class InputField extends StatelessWidget {
             onFieldSubmitted: onSubmitted,
             
             decoration: InputDecoration(
+              suffixIcon: suffixIcon,
               hintText: hint,
               hintStyle: GoogleFonts.roboto(
                 color: const Color(0xff666666),
