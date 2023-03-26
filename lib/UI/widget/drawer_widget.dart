@@ -8,35 +8,53 @@ class DrawerPage extends StatelessWidget {
     return Drawer(
       width: 250,
       backgroundColor: Colors.black,
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: <Widget>[
-                  ListTile(
-                    title: Text('App version 1.0.0', style: TextStyle(color: Colors.white),),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('App version 1.0.0', style: TextStyle(color: Colors.white),),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('App version 1.0.0', style: TextStyle(color: Colors.white),),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('App version 1.0.0', style: TextStyle(color: Colors.white),),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('App version 1.0.0', style: TextStyle(color: Colors.white),),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('App version 1.0.0', style: TextStyle(color: Colors.white),),
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            );
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          ListTile(
+            title: const Text(
+              'App version 1.0.0',
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text(
+              'App version 1.0.0',
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text(
+              'App version 1.0.0',
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text(
+              'App version 1.0.0',
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text(
+              'App version 1.0.0',
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text(
+              'App version 1.0.0',
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {},
+          ),
+        ],
+      ),
+    );
   }
 }

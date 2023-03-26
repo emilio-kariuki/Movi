@@ -101,9 +101,7 @@ class _LoginState extends State<Login> {
                         });
                       },
                       child: Icon(
-                        obscureText1
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+                        obscureText1 ? Icons.visibility : Icons.visibility_off,
                         color: Colors.grey,
                         size: 20,
                       ),
@@ -126,7 +124,10 @@ class _LoginState extends State<Login> {
                               fontSize: 16.0);
 
                           Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (context) => Home()));
+                            MaterialPageRoute(
+                              builder: (context) => const Home(),
+                            ),
+                          );
                         });
                       }
 

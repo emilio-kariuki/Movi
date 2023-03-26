@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movi/Repository/repo.dart';
-import 'package:movi/models/MovieModel.dart';
+import 'package:movi/models/movie_model.dart';
 
 part 'genre_event.dart';
 part 'genre_state.dart';

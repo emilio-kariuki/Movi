@@ -2,8 +2,8 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:movi/models/GenresModel.dart';
 import 'package:movi/Repository/repo.dart';
+import 'package:movi/models/genres_model.dart';
 
 part 'movie_genre_event.dart';
 part 'movie_genre_state.dart';

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movi/UI/widget/movie_widget.dart';
-
-import 'package:movi/models/MovieModel.dart';
+import 'package:movi/models/movie_model.dart';
 
 class TopRatedMovies extends StatelessWidget {
   final MovieModel state;

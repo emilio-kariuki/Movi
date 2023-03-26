@@ -4,7 +4,7 @@ import 'package:movi/UI/auth/login_page.dart';
 import 'package:movi/UI/home/favourites_movie_page.dart';
 import 'package:movi/UI/widget/auth_button.dart';
 import 'package:movi/UI/widget/svg_container.dart';
-import 'package:movi/models/UserModel.dart';
+import 'package:movi/models/user_model.dart';
 import 'package:movi/repository/auth_repository.dart';
 import 'package:movi/repository/firebase_repository.dart';
 

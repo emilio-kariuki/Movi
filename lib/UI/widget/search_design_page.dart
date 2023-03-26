@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movi/UI/widget/movie_widget.dart';
-import 'package:movi/models/SearchMovieModel.dart';
+import 'package:movi/models/search_movie_model.dart';
 
 class SearchDesignPage extends StatelessWidget {
   const SearchDesignPage({super.key, required this.movie, required this.pop});

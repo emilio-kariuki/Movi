@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movi/UI/widget/movie_widget.dart';
 
-import 'package:movi/models/TrendingModel.dart';
+import 'package:movi/models/trending_model.dart';
 
 class TrendingMovies extends StatelessWidget {
   final Trending state;

@@ -132,7 +132,10 @@ class _RegisterState extends State<Register> {
                               textColor: Colors.white,
                               fontSize: 16.0);
                           Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (context) => Home()));
+                            MaterialPageRoute(
+                              builder: (context) => const Home(),
+                            ),
+                          );
                         });
                       }
 

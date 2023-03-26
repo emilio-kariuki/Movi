@@ -34,7 +34,7 @@ class InputField extends StatelessWidget {
         Text(
           label,
           style: GoogleFonts.roboto(
-            color: Color.fromARGB(255, 196, 196, 196),
+            color: const Color.fromARGB(255, 196, 196, 196),
             fontSize: 15,
             fontWeight: FontWeight.w400,
           ),

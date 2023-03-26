@@ -1,10 +1,8 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:movi/models/TrendingModel.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movi/models/movie_model.dart';
+import 'package:movi/models/trending_model.dart';
 import 'package:movi/Repository/repo.dart';
-
-import '../../models/GenreMovieModel.dart';
-import '../../models/MovieModel.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';

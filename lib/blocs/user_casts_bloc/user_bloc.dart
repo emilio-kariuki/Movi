@@ -1,8 +1,6 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-import 'package:movi/models/MovieCastsModel.dart';
-import 'package:movi/models/UserFilmsModel.dart';
-import 'package:movi/models/CastModel.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movi/models/cast_model.dart';
+import 'package:movi/models/user_films_model.dart';
 import 'package:movi/Repository/repo.dart';
 
 part 'user_event.dart';

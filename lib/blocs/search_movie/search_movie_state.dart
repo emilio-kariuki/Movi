@@ -1,6 +1,5 @@
 part of 'search_movie_bloc.dart';
 
-@immutable
 abstract class SearchMovieState extends Equatable {
   const SearchMovieState();
 

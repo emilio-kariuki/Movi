@@ -11,16 +11,16 @@ import 'package:movi/UI/widget/drawer_widget.dart';
 import 'package:movi/UI/widget/movie_widget.dart';
 import 'package:movi/blocs/movieDetails_bloc/movie_details_bloc.dart';
 import 'package:movi/blocs/movie_trailer/trailer_bloc.dart';
+import 'package:movi/models/user_movies.dart';
 import 'package:movi/repository/firebase_repository.dart';
 import 'package:movi/util/responsive.dart';
 import 'package:movi/blocs/Casts_bloc/casts_bloc.dart';
 import 'package:movi/blocs/similar_bloc/similar_bloc.dart';
-import 'package:movi/models/UserMovies.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as ytmobile;
 
 class MovieDetails extends StatefulWidget {
-  MovieDetails({super.key, required this.id});
+  const MovieDetails({super.key, required this.id});
 
   final String id;
 
@@ -1458,7 +1458,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                                                                             ),
                                                                             onReady:
                                                                                 () {
-                                                                              print('Player is ready.');
+                                                                              debugPrint('Player is ready.');
                                                                             },
                                                                           ),
                                                                           builder:

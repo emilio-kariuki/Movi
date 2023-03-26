@@ -4,9 +4,9 @@ import 'package:movi/UI/widget/auth_button.dart';
 import 'package:movi/UI/widget/movie_widget.dart';
 import 'package:movi/repository/firebase_repository.dart';
 import 'package:movi/util/responsive.dart';
-import 'package:movi/models/UserMovies.dart';
+import 'package:movi/models/user_movies.dart';
 
-enum fav { delete }
+enum Fav { delete }
 
 class FavouriteMovies extends StatefulWidget {
   const FavouriteMovies({super.key});
@@ -72,14 +72,14 @@ class _FavouriteMoviesState extends State<FavouriteMovies> {
                             right: Responsive.isDesktop(context) ? 20 : 1,
                             child: Align(
                               alignment: Alignment.topRight,
-                              child: PopupMenuButton<fav>(
+                              child: PopupMenuButton<Fav>(
                                 icon: const Icon(
                                   Icons.more_vert,
                                   color: Colors.white,
                                 ),
                                 onSelected: (value) {
                                   switch (value) {
-                                    case fav.delete:
+                                    case Fav.delete:
                                       showDialog(
                                           context: context,
                                           builder: (context) => AlertDialog(
@@ -159,9 +159,9 @@ class _FavouriteMoviesState extends State<FavouriteMovies> {
                                   }
                                 },
                                 itemBuilder: (BuildContext context) =>
-                                    <PopupMenuEntry<fav>>[
-                                  const PopupMenuItem<fav>(
-                                    value: fav.delete,
+                                    <PopupMenuEntry<Fav>>[
+                                  const PopupMenuItem<Fav>(
+                                    value: Fav.delete,
                                     child: Text("Delete "),
                                   ),
                                 ],

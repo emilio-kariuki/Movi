@@ -9,21 +9,25 @@ enum user { profile, logout }
 class ProfileCard extends StatelessWidget {
   final String name;
   final String image;
-  ProfileCard({
+  
+  const ProfileCard({
     super.key,
     required this.name,
     required this.image,
   });
 
-  final secondaryColor = Color(0xFF292929);
-  final bgColor = Color(0xFF212121);
+  final secondaryColor = const Color(0xFF292929);
+  final bgColor = const Color(0xFF212121);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const ProfilePage()));
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const ProfilePage(),
+          ),
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(left: 10),
