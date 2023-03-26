@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
-import 'package:movi/UI/Widget/MovieWidget.dart';
-import 'package:movi/Util/Responsive.dart';
-import 'package:movi/blocs/SearchMovie/search_movie_bloc.dart';
+import 'package:movi/UI/widget/movie_widget.dart';
+import 'package:movi/blocs/search_movie/search_movie_bloc.dart';
+import 'package:movi/util/responsive.dart';
 import 'package:pagination_flutter/pagination.dart';
 
 class SearchPage extends StatefulWidget {

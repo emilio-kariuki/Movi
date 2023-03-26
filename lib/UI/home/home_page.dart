@@ -4,28 +4,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movi/UI/Home/GenreMovies.dart';
-import 'package:movi/UI/Home/ProfilePage.dart';
-import 'package:movi/UI/Home/SearchPage.dart';
-import 'package:movi/UI/Home/ViewAll/PopularMovies.dart';
-import 'package:movi/UI/Home/ViewAll/TopRatedMovies.dart';
-import 'package:movi/UI/Home/ViewAll/TrendingMovies.dart';
-import 'package:movi/UI/Widget/CarouselWidgetPage.dart';
-import 'package:movi/UI/Widget/PopularMoviesPage.dart';
-import 'package:movi/UI/Widget/ProfileCard.dart';
-import 'package:movi/UI/Widget/TitleWidget.dart';
-import 'package:movi/UI/Widget/TrendingMoviesPage.dart';
-import 'package:movi/Util/Responsive.dart';
+import 'package:movi/UI/home/genre_movies.dart';
+import 'package:movi/UI/home/profile_page.dart';
+import 'package:movi/UI/home/search_page.dart';
+import 'package:movi/UI/home/view_all/popular_movies.dart';
+import 'package:movi/UI/home/view_all/top_rated_movies.dart';
+import 'package:movi/UI/home/view_all/trending_movies.dart';
+import 'package:movi/UI/widget/carousel_widget_page.dart';
+import 'package:movi/UI/widget/popular_movies_page.dart';
+import 'package:movi/UI/widget/profile_card.dart';
+import 'package:movi/UI/widget/title_widget.dart';
+import 'package:movi/UI/widget/trending_movies_page.dart';
+import 'package:movi/blocs/home_bloc/home_bloc.dart';
+import 'package:movi/blocs/movie_genre_bloc/movie_genre_bloc.dart';
+import 'package:movi/blocs/search_movie/search_movie_bloc.dart';
+import 'package:movi/util/responsive.dart';
 import 'package:movi/blocs/Casts_bloc/casts_bloc.dart';
-import 'package:movi/blocs/Homebloc/home_bloc.dart';
-import 'package:movi/blocs/SearchMovie/search_movie_bloc.dart';
 import 'package:movi/blocs/movieDetails_bloc/movie_details_bloc.dart';
-import 'package:movi/blocs/movieGenre_bloc/movie_genre_bloc.dart';
 import 'package:movi/blocs/similar_bloc/similar_bloc.dart';
-import '../Widget/TopRatedMoviesPage.dart';
+import '../widget/top_rated_movies_page.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();

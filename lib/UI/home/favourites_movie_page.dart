@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:movi/Repository/FirebaseRepository.dart';
-import 'package:movi/UI/Widget/AuthButton.dart';
-import 'package:movi/UI/Widget/MovieWidget.dart';
-import 'package:movi/Util/Responsive.dart';
+import 'package:movi/UI/widget/auth_button.dart';
+import 'package:movi/UI/widget/movie_widget.dart';
+import 'package:movi/repository/firebase_repository.dart';
+import 'package:movi/util/responsive.dart';
 import 'package:movi/models/UserMovies.dart';
 
 enum fav { delete }

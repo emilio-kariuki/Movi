@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:movi/Repository/AuthRepository.dart';
-import 'package:movi/Util/SharedPreferencesManager.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movi/repository/auth_repository.dart';
+import 'package:movi/util/shared_preferences_manager.dart';
 import 'package:movi/blocs/Authentication/authentication_bloc.dart';
 
 part 'auth_event.dart';

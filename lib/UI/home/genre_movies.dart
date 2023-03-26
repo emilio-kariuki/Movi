@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movi/UI/Widget/MovieWidget.dart';
-import 'package:movi/Util/Responsive.dart';
-import 'package:movi/blocs/GenreMovies/genre_bloc.dart';
+import 'package:movi/UI/widget/movie_widget.dart';
+import 'package:movi/blocs/genre_movies/genre_bloc.dart';
+import 'package:movi/util/responsive.dart';
 import 'package:pagination_flutter/pagination.dart';
 
 class GenreMovies extends StatefulWidget {

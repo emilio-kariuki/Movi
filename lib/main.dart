@@ -4,11 +4,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movi/UI/Auth/LoginPage.dart';
-import 'package:movi/UI/Home/HomePage.dart';
-import 'package:movi/Util/Responsive.dart';
+import 'package:movi/UI/auth/login_page.dart';
+import 'package:movi/UI/home/home_page.dart';
 import 'package:movi/blocs/Authentication/authentication_bloc.dart';
-import 'package:movi/blocs/SearchMovie/search_movie_bloc.dart';
 import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

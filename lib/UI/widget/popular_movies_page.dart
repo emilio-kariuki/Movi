@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movi/UI/Widget/MovieWidget.dart';
+import 'package:movi/UI/widget/movie_widget.dart';
 
 import 'package:movi/models/MovieModel.dart';
 
-class TopRatedMovies extends StatelessWidget {
+class PopularMovies extends StatelessWidget {
   final MovieModel state;
-  TopRatedMovies({super.key, required this.state});
+  const PopularMovies({super.key, required this.state});
 
   @override
   Widget build(BuildContext context) {

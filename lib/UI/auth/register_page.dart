@@ -1,17 +1,14 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:movi/Repository/AuthRepository.dart';
-import 'package:movi/UI/Auth/LoginPage.dart';
-import 'package:movi/UI/Home/HomePage.dart';
-import 'package:movi/UI/Widget/AuthButton.dart';
-import 'package:movi/UI/Widget/InputField.dart';
-import 'package:movi/UI/Widget/SvgButton.dart';
-import 'package:movi/UI/Widget/SvgContainer.dart';
-import 'package:movi/Util/SharedPreferencesManager.dart';
+import 'package:movi/UI/auth/login_page.dart';
+import 'package:movi/UI/home/home_page.dart';
+import 'package:movi/UI/widget/auth_button.dart';
+import 'package:movi/UI/widget/input_field.dart';
+import 'package:movi/UI/widget/svg_container.dart';
+import 'package:movi/repository/auth_repository.dart';
+import 'package:movi/util/shared_preferences_manager.dart';
 import 'package:movi/blocs/Auth/auth_bloc.dart';
 import 'package:movi/blocs/Authentication/authentication_bloc.dart';
 
@@ -207,8 +204,10 @@ class _RegisterState extends State<Register> {
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (context) => const Login()));
+                                MaterialPageRoute(
+                                  builder: (context) => const Login(),
+                                ),
+                              );
                             },
                           text: "Login",
                           style: const TextStyle(

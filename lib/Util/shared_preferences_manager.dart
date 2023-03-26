@@ -1,4 +1,4 @@
-import 'package:movi/Util/GlobalConstants.dart';
+import 'package:movi/util/global_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceManager {

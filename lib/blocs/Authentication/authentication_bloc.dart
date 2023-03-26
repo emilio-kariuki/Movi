@@ -2,7 +2,7 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:movi/Util/SharedPreferencesManager.dart';
+import 'package:movi/util/shared_preferences_manager.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';

@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movi/UI/Auth/Details/MovieDetailsPage.dart';
-import 'package:movi/Util/Responsive.dart';
-import 'package:movi/blocs/userCasts_bloc/user_bloc.dart';
+import 'package:movi/UI/Auth/Details/movie_details_page.dart';
+import 'package:movi/blocs/user_casts_bloc/user_bloc.dart';
+import 'package:movi/util/responsive.dart';
 
 class CastDetails extends StatefulWidget {
   final String id;

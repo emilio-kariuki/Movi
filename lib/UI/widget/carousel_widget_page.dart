@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movi/UI/Widget/CarouselImage.dart';
-import 'package:movi/blocs/Homebloc/home_bloc.dart';
+import 'package:movi/UI/widget/carousel_image.dart';
+import 'package:movi/blocs/home_bloc/home_bloc.dart';
 
 class CarouselWidget extends StatelessWidget {
   const CarouselWidget({super.key});

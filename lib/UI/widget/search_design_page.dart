@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movi/UI/Widget/MovieWidget.dart';
+import 'package:movi/UI/widget/movie_widget.dart';
 import 'package:movi/models/SearchMovieModel.dart';
 
 class SearchDesignPage extends StatelessWidget {

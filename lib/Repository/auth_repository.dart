@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
-import 'package:movi/Repository/FirebaseRepository.dart';
-import 'package:movi/Util/SharedPreferencesManager.dart';
+import 'package:movi/repository/firebase_repository.dart';
+import 'package:movi/util/shared_preferences_manager.dart';
 import 'package:movi/models/UserModel.dart';
 
 class AuthRepo {

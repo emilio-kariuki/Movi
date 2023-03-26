@@ -1,13 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movi/UI/Widget/MovieWidget.dart';
+import 'package:movi/UI/widget/movie_widget.dart';
 
-import 'package:movi/models/MovieModel.dart';
+import 'package:movi/models/TrendingModel.dart';
 
-class PopularMovies extends StatelessWidget {
-  final MovieModel state;
-  const PopularMovies({super.key, required this.state});
+class TrendingMovies extends StatelessWidget {
+  final Trending state;
+  const TrendingMovies({super.key, required this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class PopularMovies extends StatelessWidget {
           return MoviesWidget(
             voteAverage: state.results[index].voteAverage,
             id: state.results[index].id,
-            title: state.results[index].title ?? "",
+            title: state.results[index].title ?? "unknown",
             posterPath:
                 "https://image.tmdb.org/t/p/original/${state.results[index].posterPath}",
           );
