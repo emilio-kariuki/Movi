@@ -1,7 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
-import 'package:movi/models/MovieModel.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movi/models/movie_model.dart';
 import 'package:movi/Repository/repo.dart';
 
 part 'similar_event.dart';

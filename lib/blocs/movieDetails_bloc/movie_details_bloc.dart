@@ -1,10 +1,9 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
-import 'package:movi/models/KeywordsModel.dart';
-import 'package:movi/models/MovieDetailsModel.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movi/Repository/repo.dart';
-import 'package:movi/models/ReviewModel.dart';
+import 'package:movi/models/keywords_model.dart';
+import 'package:movi/models/movie_details_model.dart';
+import 'package:movi/models/review_model.dart';
 
 part 'movie_details_event.dart';
 part 'movie_details_state.dart';
@@ -26,7 +25,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
             emit(
                 MovieDetailsLoaded(movieDetails, moviekeywords, movierReviews));
           } catch (e) {
-            print(e);
+            debugPrint(e.toString());
             emit(MovieDetailsError(e.toString()));
           }
         }
