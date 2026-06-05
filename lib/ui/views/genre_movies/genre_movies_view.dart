@@ -7,12 +7,15 @@ class GenreMoviesView extends StackedView<GenreMoviesViewModel> {
   final int genreId;
   final String genreName;
 
-  const GenreMoviesView({super.key, required this.genreId, required this.genreName});
+  const GenreMoviesView(
+      {super.key, required this.genreId, required this.genreName});
 
   @override
-  Widget builder(BuildContext context, GenreMoviesViewModel viewModel, Widget? child) {
+  Widget builder(
+      BuildContext context, GenreMoviesViewModel viewModel, Widget? child) {
     final movies = viewModel.results?.results
-        .map((r) => GridMovieItem(id: r.id, title: r.title ?? '', posterPath: r.posterPath ?? ''))
+        .map((r) => GridMovieItem(
+            id: r.id, title: r.title ?? '', posterPath: r.posterPath ?? ''))
         .toList();
     return PaginatedMovieGrid(
       title: genreName,
@@ -21,14 +24,17 @@ class GenreMoviesView extends StackedView<GenreMoviesViewModel> {
       errorMessage: viewModel.modelError?.toString(),
       items: movies,
       currentPage: viewModel.currentPage,
-      onPageChanged: (page) => viewModel.loadMovies(genreId: genreId, page: page),
+      onPageChanged: (page) =>
+          viewModel.loadMovies(genreId: genreId, page: page),
       onMovieTap: viewModel.navigateToMovieDetails,
     );
   }
 
   @override
-  GenreMoviesViewModel viewModelBuilder(BuildContext context) => GenreMoviesViewModel();
+  GenreMoviesViewModel viewModelBuilder(BuildContext context) =>
+      GenreMoviesViewModel();
 
   @override
-  void onViewModelReady(GenreMoviesViewModel viewModel) => viewModel.loadMovies(genreId: genreId);
+  void onViewModelReady(GenreMoviesViewModel viewModel) =>
+      viewModel.loadMovies(genreId: genreId);
 }

@@ -26,9 +26,7 @@ class MoviesWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: isWide
-            ? MediaQuery.of(context).size.width * 0.10
-            : 110,
+        width: isWide ? MediaQuery.of(context).size.width * 0.10 : 110,
         margin: const EdgeInsets.only(right: 10, bottom: 4),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,12 +40,11 @@ class MoviesWidget extends StatelessWidget {
                     CachedNetworkImage(
                       imageUrl: posterPath,
                       fit: BoxFit.cover,
-                      placeholder: (_, __) =>
-                          Container(color: _kCard),
-                      errorWidget: (_, __, ___) =>
-                          Container(color: _kCard,
-                              child: const Icon(Icons.movie_outlined,
-                                  color: Colors.white24, size: 32)),
+                      placeholder: (_, __) => Container(color: _kCard),
+                      errorWidget: (_, __, ___) => Container(
+                          color: _kCard,
+                          child: const Icon(Icons.movie_outlined,
+                              color: Colors.white24, size: 32)),
                     ),
                     if ((voteAverage ?? 0) > 0)
                       Positioned(

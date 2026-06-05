@@ -7,9 +7,11 @@ class TopRatedMoviesView extends StackedView<TopRatedMoviesViewModel> {
   const TopRatedMoviesView({super.key});
 
   @override
-  Widget builder(BuildContext context, TopRatedMoviesViewModel viewModel, Widget? child) {
+  Widget builder(
+      BuildContext context, TopRatedMoviesViewModel viewModel, Widget? child) {
     final movies = viewModel.results?.results
-        .map((r) => GridMovieItem(id: r.id, title: r.title ?? '', posterPath: r.posterPath ?? ''))
+        .map((r) => GridMovieItem(
+            id: r.id, title: r.title ?? '', posterPath: r.posterPath ?? ''))
         .toList();
     return PaginatedMovieGrid(
       title: 'Top Rated',
@@ -24,8 +26,10 @@ class TopRatedMoviesView extends StackedView<TopRatedMoviesViewModel> {
   }
 
   @override
-  TopRatedMoviesViewModel viewModelBuilder(BuildContext context) => TopRatedMoviesViewModel();
+  TopRatedMoviesViewModel viewModelBuilder(BuildContext context) =>
+      TopRatedMoviesViewModel();
 
   @override
-  void onViewModelReady(TopRatedMoviesViewModel viewModel) => viewModel.loadMovies();
+  void onViewModelReady(TopRatedMoviesViewModel viewModel) =>
+      viewModel.loadMovies();
 }
